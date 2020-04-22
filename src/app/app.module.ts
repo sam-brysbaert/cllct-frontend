@@ -13,9 +13,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { LinksComponent } from './links/links.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 @NgModule({
-  declarations: [AppComponent, NavBarComponent, LinksComponent],
+  declarations: [AppComponent, NavBarComponent, LinksComponent, CategoriesComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

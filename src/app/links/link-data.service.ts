@@ -9,7 +9,7 @@ import { Link } from './link';
 export class LinkDataService {
   constructor(private http: HttpClient) {}
 
-  linksUrl = 'https://jsonplaceholder.typicode.com/users';
+  linksUrl = 'https://localhost:5001/api/collect/category/list';
 
   public getLinks() {
     let links = this.http.get<Array<Link>>(this.linksUrl).pipe(
