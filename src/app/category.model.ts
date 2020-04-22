@@ -5,9 +5,9 @@ interface CategoryJson {
 }
 export class Category {
   constructor(
-    private _name: string,
-    private _children = new Array<Category>(),
-    private _categoryId: number
+    public name: string,
+    public children = new Array<Category>(),
+    public categoryId: number
   ) {}
 
   static fromJSON(json: CategoryJson): Category {
