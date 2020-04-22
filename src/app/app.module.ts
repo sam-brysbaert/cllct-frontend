@@ -12,14 +12,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { LinksComponent } from './links/links.component';
+import { LinkListComponent } from './link-list/links.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    LinksComponent,
+    LinkListComponent,
     CategoryListComponent,
   ],
   imports: [

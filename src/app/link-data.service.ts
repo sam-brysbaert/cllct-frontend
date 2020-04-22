@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, filter } from 'rxjs/operators';
-import { Link } from './link';
+import { Link } from './link.model';
 
 @Injectable({
   providedIn: 'root',
