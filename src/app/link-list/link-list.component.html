@@ -1,6 +1,5 @@
-<button mat-button (click)="getLinks()">click me for stuff</button>
 <mat-nav-list>
-  <a mat-list-item [href]="link.website" *ngFor="let link of links | async">
-    haha {{ link.id }}
+  <a mat-list-item [href]="link.path" *ngFor="let link of links$ | async">
+    haha {{ link.linkId }}
   </a>
 </mat-nav-list>

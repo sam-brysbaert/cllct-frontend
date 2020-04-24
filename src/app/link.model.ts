@@ -1,11 +1,20 @@
-export class Link {
-  public id: number;
-  public website: string;
-  public name: string;
+interface LinkJson {
+  linkId: number;
+  name: string;
+  path: string;
+  categoryId: number;
+}
 
-  constructor(id: number, website: string, name: string) {
-    this.id = id;
-    this.website = website;
-    this.name = name;
+export class Link {
+  constructor(
+    public linkId: number,
+    public name: string,
+    public path: string,
+    public categoryId: number
+  ) {}
+
+  static fromJSON(json: LinkJson): Link {
+    const link = new Link(json.linkId, json.name, json.path, json.categoryId);
+    return link;
   }
 }

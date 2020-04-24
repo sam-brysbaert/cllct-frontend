@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LinkDataService } from '../link-data.service';
+import { Observable } from 'rxjs';
+import { Link } from '../link.model';
 
 @Component({
   selector: 'app-link-list',
@@ -7,17 +9,20 @@ import { LinkDataService } from '../link-data.service';
   styleUrls: ['./link-list.component.css'],
 })
 export class LinkListComponent implements OnInit {
-  public links;
-  constructor(private linkDataService: LinkDataService) {}
+  public _fetchLinks$: Observable<Link[]>;
+  constructor(private _linkDataService: LinkDataService) {
+    // this._fetchLinks$ = this._linkDataService.links$;
+    //temporary
+    this.selectLinksFrom(1);
+  }
 
   ngOnInit(): void {}
 
-  getLinks() {
-    this.links = this.linkDataService.getLinks();
+  public get links$(): Observable<Link[]> {
+    return this._fetchLinks$;
+  }
 
-    // this.links.forEach((l) => {
-    //   console.log(l);
-    //   l.website = 'https://' + l.website;
-    // });
+  public selectLinksFrom(categoryId) {
+    this._fetchLinks$ = this._linkDataService.allLinksFrom$(categoryId);
   }
 }
