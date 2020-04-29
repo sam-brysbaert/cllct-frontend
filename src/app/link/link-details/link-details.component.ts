@@ -15,13 +15,9 @@ export class LinkDetailsComponent implements OnInit {
     this.showLink();
   }
 
-  showLink() {
-    this.linkDataService.getLink().subscribe(
-      (data: Link) =>
-        (this.link = {
-          path: (data as any).path,
-          name: (data as any).name,
-        })
-    );
+  showLink(): void {
+    this.linkDataService
+      .getLink()
+      .subscribe((data: Link) => (this.link = { ...data }));
   }
 }

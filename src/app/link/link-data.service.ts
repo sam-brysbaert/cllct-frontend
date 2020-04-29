@@ -8,11 +8,11 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class LinkDataService {
-  private Url = 'assets/link.json';
+  private Url: string = 'assets/link.json';
 
   constructor(private http: HttpClient) {}
 
-  public getLink() {
+  public getLink(): Observable<Link> {
     return this.http.get<Link>(this.Url);
   }
 }
