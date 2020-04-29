@@ -15,8 +15,4 @@ export class LinkDataService {
   public getLink(): Ilink {
     return this.link;
   }
-
-  getHello(): string {
-    return 'hello';
-  }
 }

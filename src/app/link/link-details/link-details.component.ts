@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LinkDataService } from '../link-data.service';
+import { Ilink } from '../link';
 
 @Component({
   selector: 'app-link-details',
@@ -7,13 +8,10 @@ import { LinkDataService } from '../link-data.service';
   styleUrls: ['./link-details.component.css'],
 })
 export class LinkDetailsComponent implements OnInit {
+  link: Ilink;
   constructor(private linkDataService: LinkDataService) {}
 
   ngOnInit(): void {
-    this.printLink();
-  }
-
-  printLink(): void {
-    console.log(this.linkDataService.getLink());
+    this.link = this.linkDataService.getLink();
   }
 }

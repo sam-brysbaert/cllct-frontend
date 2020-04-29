@@ -1,1 +1,10 @@
-<p>link-details works!</p>
+<div *ngIf="link">
+  <mat-card>
+    <mat-card-title>
+      {{ link.name }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ link.path }}
+    </mat-card-subtitle>
+  </mat-card>
+</div>
