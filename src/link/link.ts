@@ -1,4 +1,4 @@
-interface link {
+interface Ilink {
   path: string;
   name: string;
 }
