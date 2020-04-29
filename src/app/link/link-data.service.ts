@@ -12,7 +12,7 @@ export class LinkDataService {
 
   constructor(private http: HttpClient) {}
 
-  public getLink(): Observable<Link> {
-    return this.http.get<Link>(this.Url);
+  public getLinks(): Observable<Link[]> {
+    return this.http.get<Link[]>(this.Url);
   }
 }

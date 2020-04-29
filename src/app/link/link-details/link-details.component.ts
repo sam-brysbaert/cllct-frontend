@@ -8,16 +8,16 @@ import { Link } from '../link';
   styleUrls: ['./link-details.component.css'],
 })
 export class LinkDetailsComponent implements OnInit {
-  link: Link;
+  links: Link[];
   constructor(private linkDataService: LinkDataService) {}
 
   ngOnInit(): void {
-    this.showLink();
+    this.showLinks();
   }
 
-  showLink(): void {
-    this.linkDataService
-      .getLink()
-      .subscribe((data: Link) => (this.link = { ...data }));
+  showLinks(): void {
+    this.linkDataService.getLinks().subscribe((data) => {
+      this.links = data['links'];
+    });
   }
 }

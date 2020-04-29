@@ -1,4 +1,20 @@
 {
-  "path": "http://www.google.com",
-  "name": "google"
+  "links": [
+    {
+      "path": "http://www.google.com",
+      "name": "google"
+    },
+    {
+      "path": "http://www.facebook.com",
+      "name": "facebook"
+    },
+    {
+      "path": "http://www.linkedin.com",
+      "name": "linkedin"
+    },
+    {
+      "path": "http://www.twitter.com",
+      "name": "twitter"
+    }
+  ]
 }
