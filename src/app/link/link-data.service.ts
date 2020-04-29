@@ -1,17 +1,15 @@
 import { Injectable, OnInit } from '@angular/core';
-import linkJson from '../temp-data/link.json';
+import linkJson from '../../temp-data/link.json';
+import { Ilink } from './link';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LinkDataService implements OnInit {
+export class LinkDataService {
   link: Ilink;
 
-  constructor() {}
-
-  ngOnInit(): void {
+  constructor() {
     this.link = linkJson;
-    console.log(this.link);
   }
 
   public getLink(): Ilink {

@@ -9,9 +9,11 @@ import { LinkDataService } from '../link-data.service';
 export class LinkDetailsComponent implements OnInit {
   constructor(private linkDataService: LinkDataService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.printLink();
+  }
 
   printLink(): void {
-    console.log(this.linkDataService.getHello);
+    console.log(this.linkDataService.getLink());
   }
 }

@@ -11,12 +11,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { LinkModule } from './link/link.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavBarComponent
-  ],
+  declarations: [AppComponent, NavBarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,9 +24,10 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    LinkModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
