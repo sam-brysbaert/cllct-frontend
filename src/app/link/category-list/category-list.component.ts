@@ -11,6 +11,10 @@ import { CategoryDataService } from '../category-data.service';
 })
 export class CategoryListComponent implements OnInit {
   categories: Category[];
+  // tree view
+  treeControl = new NestedTreeControl<Category>((node) => node.children);
+  dataSource = new MatTreeNestedDataSource<Category>();
+
   constructor(private categoryDataService: CategoryDataService) {}
 
   ngOnInit(): void {
@@ -20,7 +24,11 @@ export class CategoryListComponent implements OnInit {
   showCategories(): void {
     this.categoryDataService.getCategories().subscribe((data) => {
       this.categories = data['categories'];
-      console.log(this.categories);
+
+      this.dataSource.data = this.categories;
     });
   }
+
+  hasChild = (_: number, node: Category) =>
+    !!node.children && node.children.length > 0;
 }
