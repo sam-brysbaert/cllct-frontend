@@ -1,18 +1,18 @@
-import { Injectable, OnInit } from '@angular/core';
-import linkJson from '../../temp-data/link.json';
-import { Ilink } from './link';
+import { Injectable } from '@angular/core';
+import { Link } from './link';
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LinkDataService {
-  link: Ilink;
+  private Url = 'assets/link.json';
 
-  constructor() {
-    this.link = linkJson;
-  }
+  constructor(private http: HttpClient) {}
 
-  public getLink(): Ilink {
-    return this.link;
+  public getLink() {
+    return this.http.get<Link>(this.Url);
   }
 }

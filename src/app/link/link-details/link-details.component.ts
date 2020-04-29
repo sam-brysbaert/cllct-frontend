@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LinkDataService } from '../link-data.service';
-import { Ilink } from '../link';
+import { Link } from '../link';
 
 @Component({
   selector: 'app-link-details',
@@ -8,10 +8,20 @@ import { Ilink } from '../link';
   styleUrls: ['./link-details.component.css'],
 })
 export class LinkDetailsComponent implements OnInit {
-  link: Ilink;
+  link: Link;
   constructor(private linkDataService: LinkDataService) {}
 
   ngOnInit(): void {
-    this.link = this.linkDataService.getLink();
+    this.showLink();
+  }
+
+  showLink() {
+    this.linkDataService.getLink().subscribe(
+      (data: Link) =>
+        (this.link = {
+          path: (data as any).path,
+          name: (data as any).name,
+        })
+    );
   }
 }
