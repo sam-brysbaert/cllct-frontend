@@ -20,4 +20,8 @@ export class LinkDetailsComponent implements OnInit {
       this.links = data['links'];
     });
   }
+
+  open(link: Link) {
+    window.open(link.path);
+  }
 }
