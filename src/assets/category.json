@@ -1,0 +1,32 @@
+{
+  "categories": [
+    {
+      "name": "personal",
+      "id": 1,
+      "children": [
+        {
+          "name": "non-productive",
+          "id": 2,
+          "children": [
+            {
+              "name": "social media",
+              "id": 3,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "work",
+      "id": 14,
+      "children": [
+        {
+          "name": "agile",
+          "id": 5,
+          "children": []
+        }
+      ]
+    }
+  ]
+}
