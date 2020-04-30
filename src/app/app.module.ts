@@ -13,6 +13,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { LinkModule } from './link/link.module';
+import { CategoryModule } from './category/category.module';
 
 @NgModule({
   declarations: [AppComponent, NavBarComponent],
@@ -28,6 +29,7 @@ import { LinkModule } from './link/link.module';
     MatIconModule,
     MatListModule,
     LinkModule,
+    CategoryModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
