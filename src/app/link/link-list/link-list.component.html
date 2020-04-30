@@ -1,1 +1,3 @@
-<p>link-list works!</p>
+<div *ngFor="let link of links$ | async">
+  <app-link-details [link]="link"></app-link-details>
+</div>

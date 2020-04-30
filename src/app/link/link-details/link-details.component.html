@@ -1,10 +1,8 @@
-<div *ngFor="let link of links$ | async">
-  <mat-card>
-    <mat-card-title (click)="open(link)">
-      {{ link.name }}
-    </mat-card-title>
-    <mat-card-subtitle (click)="open(link)">
-      {{ link.path }}
-    </mat-card-subtitle>
-  </mat-card>
-</div>
+<mat-card>
+  <mat-card-title (click)="open(link)">
+    {{ link.name }}
+  </mat-card-title>
+  <mat-card-subtitle (click)="open(link)">
+    {{ link.path }}
+  </mat-card-subtitle>
+</mat-card>

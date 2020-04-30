@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { LinkDataService } from '../link-data.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { Link } from '../link';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-link-details',
@@ -9,18 +7,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./link-details.component.css'],
 })
 export class LinkDetailsComponent implements OnInit {
-  private _fetchLinks$: Observable<Link[]>;
-  constructor(private linkDataService: LinkDataService) {}
+  @Input() link: Link;
+  constructor() {}
 
-  ngOnInit(): void {
-    this._fetchLinks$ = this.linkDataService.getLinks();
-  }
+  ngOnInit(): void {}
 
   open(link: Link) {
     window.open(link.path);
-  }
-
-  get links$(): Observable<Link[]> {
-    return this._fetchLinks$;
   }
 }
