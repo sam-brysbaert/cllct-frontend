@@ -2,3 +2,7 @@ mat-card-title,
 mat-card-subtitle {
   cursor: pointer;
 }
+
+mat-card {
+  margin: 20px;
+}
