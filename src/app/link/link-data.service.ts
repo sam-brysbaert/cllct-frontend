@@ -3,6 +3,7 @@ import { Link } from './link';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +14,6 @@ export class LinkDataService {
   constructor(private http: HttpClient) {}
 
   public getLinks(): Observable<Link[]> {
-    return this.http.get<Link[]>(this.Url);
+    return this.http.get<Link[]>(this.Url).pipe(map((x) => x['links']));
   }
 }

@@ -1,4 +1,4 @@
-<div *ngFor="let link of links">
+<div *ngFor="let link of links$ | async">
   <mat-card>
     <mat-card-title (click)="open(link)">
       {{ link.name }}

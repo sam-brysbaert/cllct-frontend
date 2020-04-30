@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./category-list.component.css'],
 })
 export class CategoryListComponent implements OnInit {
-  categories$: Observable<Category[]>;
+  private _fetchCategories$: Observable<Category[]>;
   // tree view
   treeControl = new NestedTreeControl<Category>((node) => node.children);
   dataSource = new MatTreeNestedDataSource<Category>();
@@ -19,12 +19,14 @@ export class CategoryListComponent implements OnInit {
   constructor(private categoryDataService: CategoryDataService) {}
 
   ngOnInit(): void {
-    this.categories$ = this.categoryDataService.getCategories();
-    this.categories$.subscribe(
-      (response) => (this.dataSource = response['categories'])
-    );
+    this._fetchCategories$ = this.categoryDataService.getCategories();
+    this.categories$.subscribe((response) => (this.dataSource.data = response));
   }
 
   hasChild = (_: number, node: Category) =>
     !!node.children && node.children.length > 0;
+
+  get categories$(): Observable<Category[]> {
+    return this._fetchCategories$;
+  }
 }
