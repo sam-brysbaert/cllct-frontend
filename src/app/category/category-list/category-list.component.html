@@ -13,8 +13,8 @@
     <li>
       <div class="mat-tree-node">
         <button mat-icon-button matTreeNodeToggle>
-          <mat-icon class="mat-icon-rtl-mirror">{{
-            treeControl.isExpanded(node) ? "expand_more" : "chevron_right"
+          <mat-icon>{{
+            treeControl.isExpanded(node) ? "chevron_right" : "expand_more"
           }}</mat-icon>
         </button>
         {{ node.name }}
