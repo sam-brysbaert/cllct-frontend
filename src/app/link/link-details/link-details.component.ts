@@ -4,7 +4,7 @@ import { Link } from '../link';
 @Component({
   selector: 'app-link-details',
   templateUrl: './link-details.component.html',
-  styleUrls: ['./link-details.component.css'],
+  styleUrls: ['./link-details.component.scss'],
 })
 export class LinkDetailsComponent implements OnInit {
   @Input() link: Link;
