@@ -14,3 +14,17 @@
   display: flex;
   justify-content: space-between;
 }
+
+.dot {
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 7px;
+}
+
+#toggleCategories {
+  display: flex;
+  justify-content: right;
+  width: 100%;
+}

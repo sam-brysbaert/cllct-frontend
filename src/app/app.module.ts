@@ -14,9 +14,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { LinkModule } from './link/link.module';
 import { CategoryModule } from './category/category.module';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, NavBarComponent],
+  declarations: [AppComponent, NavBarComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

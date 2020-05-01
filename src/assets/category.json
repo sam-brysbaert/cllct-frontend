@@ -3,14 +3,17 @@
     {
       "name": "personal",
       "id": 1,
+      "color": "red",
       "children": [
         {
           "name": "non-productive",
           "id": 2,
+          "color": "blue",
           "children": [
             {
               "name": "social media",
               "id": 3,
+              "color": "black",
               "children": []
             }
           ]
@@ -20,10 +23,12 @@
     {
       "name": "work",
       "id": 14,
+      "color": "green",
       "children": [
         {
           "name": "agile",
           "id": 5,
+          "color": "orange",
           "children": []
         }
       ]
