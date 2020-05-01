@@ -1,0 +1,32 @@
+@import "../../global";
+
+.header-wrapper {
+  background-color: $header;
+  height: 4rem;
+}
+
+h1 {
+  padding: 1rem 0 1rem 10px;
+}
+
+@media (max-width: map-get($breakpoints, sm)) {
+  .header-container {
+  }
+}
+
+@media (min-width: map-get($breakpoints, sm)) and (max-width: map-get($breakpoints, md)) {
+  .header-container {
+  }
+}
+
+@media (min-width: map-get($breakpoints, md)) and (max-width: map-get($breakpoints, lg)) {
+  .header-container {
+    margin-left: 10%;
+  }
+}
+
+@media (min-width: map-get($breakpoints, lg)) {
+  .header-container {
+    margin-left: 20%;
+  }
+}

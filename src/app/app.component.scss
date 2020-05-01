@@ -1,3 +1,4 @@
+@import "../global";
 .container {
   display: grid;
 
@@ -30,7 +31,7 @@ app-footer {
   grid-area: footer;
 }
 
-@media (max-width: 600px) {
+@media (max-width: map-get($breakpoints, sm)) {
   .container {
     grid-template-areas:
       "header"
@@ -51,19 +52,19 @@ app-footer {
   }
 }
 
-@media (min-width: 601px) and (max-width: 900px) {
+@media (min-width: map-get($breakpoints, sm)) and (max-width: map-get($breakpoints, md)) {
   .container {
     grid-template-columns: 0 minmax(200px, 1fr) 3fr 0;
   }
 }
 
-@media (min-width: 901px) and (max-width: 1400px) {
+@media (min-width: map-get($breakpoints, md)) and (max-width: map-get($breakpoints, lg)) {
   .container {
     grid-template-columns: 10% minmax(250px, 1fr) 3fr 10%;
   }
 }
 
-@media (min-width: 1401px) {
+@media (min-width: map-get($breakpoints, lg)) {
   .container {
     grid-template-columns: 20% minmax(250px, 1fr) 3fr 20%;
   }
