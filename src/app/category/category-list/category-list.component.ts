@@ -20,7 +20,11 @@ export class CategoryListComponent implements OnInit {
 
   ngOnInit(): void {
     this._fetchCategories$ = this.categoryDataService.getCategories();
-    this.categories$.subscribe((response) => (this.dataSource.data = response));
+    this.categories$.subscribe((response) => {
+      this.dataSource.data = response;
+      this.treeControl.dataNodes = response;
+      this.treeControl.expandAll(); // for some reason expand and collapse have opposite functionality to what you would expect, no idea why
+    });
   }
 
   hasChild = (_: number, node: Category) =>
