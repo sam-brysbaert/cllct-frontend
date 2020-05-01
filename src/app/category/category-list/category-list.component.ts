@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { Category } from '../category';
@@ -11,6 +12,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-category-list',
@@ -25,24 +27,28 @@ import {
           overflow: 'hidden',
         })
       ),
-      state(
-        '*',
-        style({
-          overflow: 'hidden',
-        })
-      ),
+      state('*', style({})),
       transition('* => *', [animate('200ms cubic-bezier(0.25, 0.8, 0.25, 1)')]),
     ]),
   ],
 })
 export class CategoryListComponent implements OnInit {
   public isCollapsed: boolean = true;
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
+    .pipe(
+      map((result) => result.matches),
+      shareReplay()
+    );
   private _fetchCategories$: Observable<Category[]>;
   // tree view
   treeControl = new NestedTreeControl<Category>((node) => node.children);
   dataSource = new MatTreeNestedDataSource<Category>();
 
-  constructor(private categoryDataService: CategoryDataService) {}
+  constructor(
+    private categoryDataService: CategoryDataService,
+    private breakpointObserver: BreakpointObserver
+  ) {}
 
   ngOnInit(): void {
     this._fetchCategories$ = this.categoryDataService.getCategories();

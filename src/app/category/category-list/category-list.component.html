@@ -1,5 +1,13 @@
-<button (click)="isCollapsed = !isCollapsed">Toggle</button>
-<div [@smoothCollapse]="isCollapsed ? 'show' : null">
+<button
+  id="toggleCategories"
+  mat-button
+  *ngIf="isHandset$ | async"
+  (click)="isCollapsed = !isCollapsed"
+>
+  <span class="material-icons"> folder </span>
+  folders
+</button>
+<div [@smoothCollapse]="isCollapsed && (isHandset$ | async) ? 'show' : null">
   <mat-tree
     [dataSource]="dataSource"
     [treeControl]="treeControl"
