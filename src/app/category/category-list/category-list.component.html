@@ -5,14 +5,20 @@
 >
   <mat-tree-node *matTreeNodeDef="let node" matTreeToggle>
     <li class="mat-tree-node">
-      {{ node.name }}
+      <div class="category-text">
+        <span class="dot" [style.background-color]="node.color"></span>
+        <span class="category-name">{{ node.name }}</span>
+      </div>
       <button mat-icon-button disabled></button>
     </li>
   </mat-tree-node>
   <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
     <li>
       <div class="mat-tree-node">
-        {{ node.name }}
+        <div class="category-text">
+          <span class="dot" [style.background-color]="node.color"></span>
+          <span class="category-name">{{ node.name }}</span>
+        </div>
         <button mat-icon-button matTreeNodeToggle>
           <mat-icon>{{
             treeControl.isExpanded(node) ? "chevron_right" : "expand_more"
