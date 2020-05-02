@@ -1,0 +1,24 @@
+@import "~@angular/material/theming";
+// import custom component themes
+@import "app/header/header-theme.scss";
+@include mat-core();
+
+// theme colors
+$cllct-light-primary: mat-palette($mat-indigo);
+$cllct-light-accent: mat-palette($mat-pink, A200, A100, A400);
+$cllct-light-warn: mat-palette($mat-red);
+
+// theme object (a Sass map containing all of the palettes)
+$cllct-light-theme: mat-light-theme(
+  $cllct-light-primary,
+  $cllct-light-accent,
+  $cllct-light-warn
+);
+
+// custom component theming
+@mixin custom-theme($theme) {
+  @include header-theme($theme);
+}
+
+@include angular-material-theme($cllct-light-theme);
+@include custom-theme($cllct-light-theme);

@@ -1,32 +1,41 @@
 @import "../../global";
 
 .header-wrapper {
-  background-color: $header;
   height: 4rem;
+  position: relative;
+  // border-bottom: 1px solid mat-color($primary, divider);
+}
+
+.header-content {
+  height: 100%;
 }
 
 h1 {
-  padding: 1rem 0 1rem 10px;
+  // padding: 1rem 0 1rem 10px;
+  position: absolute;
+  top: 50%;
+  padding-left: 10px;
+  transform: translate(0, -50%);
 }
 
 @media (max-width: map-get($breakpoints, sm)) {
-  .header-container {
+  .header-content {
   }
 }
 
 @media (min-width: map-get($breakpoints, sm)) and (max-width: map-get($breakpoints, md)) {
-  .header-container {
+  .header-content {
   }
 }
 
 @media (min-width: map-get($breakpoints, md)) and (max-width: map-get($breakpoints, lg)) {
-  .header-container {
-    margin-left: 10%;
+  .header-content {
+    margin: 0 10%;
   }
 }
 
 @media (min-width: map-get($breakpoints, lg)) {
-  .header-container {
-    margin-left: 20%;
+  .header-content {
+    margin: 0 20%;
   }
 }
