@@ -36,3 +36,13 @@
     margin: 0 20%;
   }
 }
+
+input {
+  border: 0;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  margin-bottom: -0.75em;
+}

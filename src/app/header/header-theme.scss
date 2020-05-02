@@ -13,4 +13,12 @@
     color: mat-contrast($primary, 500);
     font-size: 30px;
   }
+
+  .mat-form-field-label,
+  mat-icon {
+    color: mat-contrast($primary, 500) !important;
+  }
+  .mat-form-field-underline {
+    background-color: mat-contrast($primary, 500) !important;
+  }
 }
