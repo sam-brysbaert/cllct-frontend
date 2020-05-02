@@ -1,6 +1,7 @@
 @import "~@angular/material/theming";
 // import custom component themes
 @import "app/header/header-theme.scss";
+@import "app/category/category-list/category-list-theme.scss";
 @include mat-core();
 
 // theme colors
@@ -18,6 +19,7 @@ $cllct-light-theme: mat-light-theme(
 // custom component theming
 @mixin custom-theme($theme) {
   @include header-theme($theme);
+  @include category-list-theme($theme);
 }
 
 @include angular-material-theme($cllct-light-theme);
