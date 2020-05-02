@@ -16,9 +16,15 @@ import { LinkModule } from './link/link.module';
 import { CategoryModule } from './category/category.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  declarations: [AppComponent, NavBarComponent, HeaderComponent, FooterComponent],
+  declarations: [
+    AppComponent,
+    NavBarComponent,
+    HeaderComponent,
+    FooterComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,6 +38,7 @@ import { FooterComponent } from './footer/footer.component';
     MatListModule,
     LinkModule,
     CategoryModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

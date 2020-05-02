@@ -8,23 +8,20 @@
 
 .header-content {
   height: 100%;
+  display: flex;
+  align-items: center;
 }
 
-h1 {
-  // padding: 1rem 0 1rem 10px;
-  position: absolute;
-  top: 50%;
-  padding-left: 10px;
-  transform: translate(0, -50%);
+#main-title {
+  padding: 0 20px 0 10px;
 }
 
-@media (max-width: map-get($breakpoints, sm)) {
-  .header-content {
-  }
-}
-
-@media (min-width: map-get($breakpoints, sm)) and (max-width: map-get($breakpoints, md)) {
-  .header-content {
+#search {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  input {
+    height: 45%;
   }
 }
 
