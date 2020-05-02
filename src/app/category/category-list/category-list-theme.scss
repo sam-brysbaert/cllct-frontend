@@ -5,7 +5,7 @@
   $foreground: map-get($theme, foreground);
   $fds: map-get($theme, background);
 
-  mat-tree {
+  .category-tree {
     background-color: inherit !important;
   }
 
