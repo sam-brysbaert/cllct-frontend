@@ -27,10 +27,29 @@
 
 .toggle-wrapper {
   display: flex;
-  justify-content: center;
-  padding: 0 1px;
 }
 
-#toggleCategories {
-  width: 100%;
+#toggleCategories,
+#categoriesLabel {
+  width: 80%;
+  margin-right: 0.5%;
+}
+
+#categoriesLabel {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#categoriesLabel .text {
+  margin-left: 3px;
+}
+
+#editCategories {
+  width: 20%;
+}
+
+mat-divider {
+  margin-top: 0.5rem;
 }

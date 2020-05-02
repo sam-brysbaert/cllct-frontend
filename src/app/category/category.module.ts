@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule, MatDivider } from '@angular/material/divider';
 
 @NgModule({
   declarations: [CategoryListComponent],
@@ -19,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     MatButtonModule,
     LayoutModule,
+    MatDividerModule,
   ],
   exports: [CategoryListComponent],
 })

@@ -5,8 +5,8 @@
 @include mat-core();
 
 // theme colors
-$cllct-light-primary: mat-palette($mat-indigo);
-$cllct-light-accent: mat-palette($mat-pink, A200, A100, A400);
+$cllct-light-primary: mat-palette($mat-teal);
+$cllct-light-accent: mat-palette($mat-orange, A200, A100, A400);
 $cllct-light-warn: mat-palette($mat-red);
 
 // theme object (a Sass map containing all of the palettes)

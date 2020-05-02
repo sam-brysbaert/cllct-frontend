@@ -1,15 +1,22 @@
 <div class="toggle-wrapper">
   <button
     id="toggleCategories"
-    mat-raised-button
-    color="primary"
-    *ngIf="isHandset$ | async"
+    mat-stroked-button
+    *ngIf="isHandset$ | async; else elseBlock"
     (click)="isCollapsed = !isCollapsed"
   >
     <span class="material-icons"> folder </span>
-    folders
+    <span class="text"> categories</span>
   </button>
+  <ng-template #elseBlock>
+    <div id="categoriesLabel">
+      <mat-icon>folder</mat-icon>
+      <span class="text">categories</span>
+    </div>
+  </ng-template>
+  <button mat-stroked-button id="editCategories">edit</button>
 </div>
+<mat-divider></mat-divider>
 <div [@smoothCollapse]="isCollapsed && (isHandset$ | async) ? 'show' : null">
   <mat-tree
     [dataSource]="dataSource"
