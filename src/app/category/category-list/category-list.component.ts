@@ -5,45 +5,29 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 import { Category } from '../category';
 import { CategoryDataService } from '../category-data.service';
 import { Observable } from 'rxjs';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-} from '@angular/animations';
+import { Animations } from '../../animations';
 import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
   styleUrls: ['./category-list.component.scss'],
-  animations: [
-    trigger('smoothCollapse', [
-      state(
-        'show',
-        style({
-          height: '0',
-          overflow: 'hidden',
-        })
-      ),
-      state('*', style({})),
-      transition('* => *', [animate('200ms cubic-bezier(0.25, 0.8, 0.25, 1)')]),
-    ]),
-  ],
+  animations: [Animations.smoothCollapse],
 })
 export class CategoryListComponent implements OnInit {
+  private _fetchCategories$: Observable<Category[]>;
+  selectedCategory: Category;
+  // tree view
+  treeControl = new NestedTreeControl<Category>((node) => node.children);
+  dataSource = new MatTreeNestedDataSource<Category>();
   public isCollapsed: boolean = true;
+  // for changing layout for devices with narrow screens (i.e. phones)
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
       map((result) => result.matches),
       shareReplay()
     );
-  private _fetchCategories$: Observable<Category[]>;
-  // tree view
-  treeControl = new NestedTreeControl<Category>((node) => node.children);
-  dataSource = new MatTreeNestedDataSource<Category>();
 
   constructor(
     private categoryDataService: CategoryDataService,
@@ -57,10 +41,14 @@ export class CategoryListComponent implements OnInit {
     );
   }
 
-  hasChild = (_: number, node: Category) =>
-    !!node.children && node.children.length > 0;
-
   get categories$(): Observable<Category[]> {
     return this._fetchCategories$;
   }
+
+  onSelect(category: Category) {
+    this.selectedCategory = category;
+  }
+
+  hasChild = (_: number, node: Category) =>
+    !!node.children && node.children.length > 0;
 }

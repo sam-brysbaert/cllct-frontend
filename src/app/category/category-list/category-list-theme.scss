@@ -3,9 +3,13 @@
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
   $foreground: map-get($theme, foreground);
-  $fds: map-get($theme, background);
+  $background: map-get($theme, background);
 
   .category-tree {
     background-color: inherit !important;
+  }
+
+  .selected {
+    background-color: rgba(100, 100, 100, 0.3);
   }
 }
