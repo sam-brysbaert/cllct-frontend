@@ -11,7 +11,10 @@
     </div>
 
     <div id="theme">
-      <mat-slide-toggle></mat-slide-toggle>
+      <mat-slide-toggle
+        [checked]="isDarkTheme | async"
+        (change)="toggleDarkTheme($event.checked)"
+      ></mat-slide-toggle>
       dark mode
     </div>
   </div>

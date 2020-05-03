@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { LinkModule } from './link/link.module';
 import { CategoryModule } from './category/category.module';
+import { CoreModule } from './core/core.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatInputModule } from '@angular/material/input';
@@ -41,6 +42,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     CategoryModule,
     MatInputModule,
     MatSlideToggleModule,
+    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

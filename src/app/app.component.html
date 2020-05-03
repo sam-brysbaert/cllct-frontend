@@ -1,4 +1,7 @@
-<div class="container mat-app-background" [ngClass]="{ 'dark-theme': true }">
+<div
+  class="container mat-app-background"
+  [ngClass]="{ 'dark-theme': isDarkTheme | async }"
+>
   <app-header></app-header>
   <app-category-list></app-category-list>
   <app-link-list></app-link-list>

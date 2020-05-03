@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemeService } from '../core/theme.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  isDarkTheme: Observable<boolean>;
+  constructor(private themeService: ThemeService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isDarkTheme = this.themeService.isDarkTheme;
+  }
+
+  toggleDarkTheme(checked: boolean) {
+    this.themeService.setDarkTheme(checked);
+  }
 }
