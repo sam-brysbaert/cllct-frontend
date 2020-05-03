@@ -1,5 +1,6 @@
 <div class="wrapper">
-  <div *ngFor="let link of links$ | async">
+  <input (keyup)="filterLinks$.next($event.target.value)" type="text" />
+  <div *ngFor="let link of links$ | async | linkFilter: filterTerm">
     <app-link-details [link]="link"></app-link-details>
   </div>
   <div class="buttonContainer">

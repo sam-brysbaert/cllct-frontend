@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LinkDataService } from '../link-data.service';
 import { Link } from '../link';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-link-list',
@@ -10,7 +11,17 @@ import { Observable } from 'rxjs';
 })
 export class LinkListComponent implements OnInit {
   private _fetchLinks$: Observable<Link[]>;
-  constructor(private linkDataService: LinkDataService) {}
+  public filterTerm: string;
+  public filterLinks$ = new Subject<string>();
+
+  constructor(private linkDataService: LinkDataService) {
+    this.filterLinks$
+      .pipe(
+        distinctUntilChanged(),
+        map((val) => val.toLowerCase())
+      )
+      .subscribe((val) => (this.filterTerm = val));
+  }
 
   ngOnInit(): void {
     this._fetchLinks$ = this.linkDataService.getLinks();
