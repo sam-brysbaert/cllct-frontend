@@ -6,7 +6,11 @@
         <form action="">
           <mat-icon id="searchIcon">search</mat-icon>
           <mat-form-field>
-            <input matInput placeholder="Filter by name, tag or url" />
+            <input
+              matInput
+              (keyup)="updateFilterTerm($event.target.value)"
+              placeholder="Filter by name, tag or url"
+            />
           </mat-form-field>
         </form>
       </div>
