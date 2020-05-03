@@ -1,21 +1,25 @@
 <div class="header-wrapper" color="primary">
   <div class="header-content">
     <div id="main-title">Cllct</div>
-    <div id="search">
-      <form action="">
-        <mat-icon id="searchIcon">search</mat-icon>
-        <mat-form-field>
-          <input matInput placeholder="Filter by name, tag or url" />
-        </mat-form-field>
-      </form>
-    </div>
+    <div id="tools">
+      <div id="search">
+        <form action="">
+          <mat-icon id="searchIcon">search</mat-icon>
+          <mat-form-field>
+            <input matInput placeholder="Filter by name, tag or url" />
+          </mat-form-field>
+        </form>
+      </div>
 
-    <div id="theme">
-      <mat-slide-toggle
-        [checked]="isDarkTheme | async"
-        (change)="toggleDarkTheme($event.checked)"
-      ></mat-slide-toggle>
-      dark mode
+      <div id="theme-container">
+        <mat-icon>
+          wb_incandescent
+        </mat-icon>
+        <mat-slide-toggle
+          [checked]="isDarkTheme | async"
+          (change)="toggleDarkTheme($event.checked)"
+        ></mat-slide-toggle>
+      </div>
     </div>
   </div>
 </div>

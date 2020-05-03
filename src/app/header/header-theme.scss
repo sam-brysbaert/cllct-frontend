@@ -16,7 +16,8 @@
 
   .mat-form-field-label,
   mat-form-field,
-  #searchIcon {
+  #searchIcon,
+  #theme-container mat-icon {
     color: mat-contrast($primary, 500) !important;
   }
   .mat-form-field-underline {
