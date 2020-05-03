@@ -17,6 +17,7 @@ import { CategoryModule } from './category/category.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MatInputModule } from '@angular/material/input';
     LinkModule,
     CategoryModule,
     MatInputModule,
+    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

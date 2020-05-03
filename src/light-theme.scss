@@ -4,23 +4,29 @@
 @import "app/category/category-list/category-list-theme.scss";
 @include mat-core();
 
-// theme colors
-$cllct-light-primary: mat-palette($mat-teal);
-$cllct-light-accent: mat-palette($mat-orange, A200, A100, A400);
-$cllct-light-warn: mat-palette($mat-red);
-
-// theme object (a Sass map containing all of the palettes)
-$cllct-light-theme: mat-light-theme(
-  $cllct-light-primary,
-  $cllct-light-accent,
-  $cllct-light-warn
-);
-
-// custom component theming
+// for theming my own components
 @mixin custom-theme($theme) {
   @include header-theme($theme);
   @include category-list-theme($theme);
 }
 
-@include angular-material-theme($cllct-light-theme);
-@include custom-theme($cllct-light-theme);
+// light theme
+$primary: mat-palette($mat-teal);
+$accent: mat-palette($mat-orange, A200, A100, A400);
+$warn: mat-palette($mat-red);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
+@include custom-theme($theme);
+
+// dark theme
+.dark-theme {
+  $dark-primary: mat-palette($mat-indigo);
+  $dark-accent: mat-palette($mat-pink, A200, A100, A400);
+  $dark-warn: mat-palette($mat-red);
+
+  $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+  @include angular-material-theme($dark-theme);
+  @include custom-theme($dark-theme);
+}
