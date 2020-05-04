@@ -5,11 +5,13 @@
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
-  .category-tree {
-    background-color: inherit !important;
-  }
+  .categoryListWrapper {
+    .category-tree {
+      background-color: inherit !important;
+    }
 
-  .selected {
-    background-color: rgba(100, 100, 100, 0.3);
+    .selected {
+      background-color: rgba(100, 100, 100, 0.3);
+    }
   }
 }

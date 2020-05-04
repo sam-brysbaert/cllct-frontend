@@ -7,20 +7,19 @@
 
   .header-wrapper {
     background-color: mat-color($primary);
-  }
+    #main-title {
+      color: mat-contrast($primary, 500);
+      font-size: 30px;
+    }
 
-  #main-title {
-    color: mat-contrast($primary, 500);
-    font-size: 30px;
-  }
-
-  .mat-form-field-label,
-  mat-form-field,
-  #searchIcon,
-  #theme-container mat-icon {
-    color: mat-contrast($primary, 500) !important;
-  }
-  .mat-form-field-underline {
-    background-color: mat-contrast($primary, 500) !important;
+    .mat-form-field-label,
+    mat-form-field,
+    #searchIcon,
+    #theme-container mat-icon {
+      color: mat-contrast($primary, 500) !important;
+    }
+    .mat-form-field-underline {
+      background-color: mat-contrast($primary, 500) !important;
+    }
   }
 }

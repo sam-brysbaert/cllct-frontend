@@ -1,0 +1,11 @@
+@import "../../../_global.scss";
+mat-form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: map-get($breakpoints, sm)) {
+  mat-card {
+    width: 20rem;
+  }
+}
