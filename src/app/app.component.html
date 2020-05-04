@@ -3,8 +3,6 @@
   [ngClass]="{ 'dark-theme': isDarkTheme | async }"
 >
   <app-header></app-header>
-  <app-category-list></app-category-list>
-  <app-link-list></app-link-list>
+  <router-outlet></router-outlet>
   <app-footer></app-footer>
 </div>
-<router-outlet></router-outlet>

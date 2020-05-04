@@ -19,9 +19,10 @@ import { FooterComponent } from './footer/footer.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { UserModule } from './user/user.module';
+import { OverviewComponent } from './overview/overview.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, OverviewComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

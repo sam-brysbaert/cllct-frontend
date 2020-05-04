@@ -1,0 +1,25 @@
+@import "../../global";
+.container {
+  display: grid;
+
+  grid-template-areas: "category-list link-list";
+
+  grid-template-columns: minmax(250px, 1fr) 3fr;
+  grid-template-rows: 1fr;
+  grid-gap: 10px;
+
+  height: 100vh;
+}
+
+@media (max-width: map-get($breakpoints, sm)) {
+  .container {
+    grid-template-areas:
+      "category-list"
+      "link-list";
+
+    grid-template-columns: 1fr;
+    grid-template-rows:
+      auto /* category-list */
+      1fr; /* link-list */
+  }
+}
