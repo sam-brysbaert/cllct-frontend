@@ -1,4 +1,11 @@
 @import "../../../_global.scss";
+
+#registerWrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 10%;
+}
+
 mat-form-field {
   display: flex;
   flex-direction: column;
@@ -7,5 +14,11 @@ mat-form-field {
 @media (min-width: map-get($breakpoints, sm)) {
   mat-card {
     width: 20rem;
+  }
+}
+
+@media (max-width: map-get($breakpoints, sm)) {
+  mat-card {
+    width: 100%;
   }
 }

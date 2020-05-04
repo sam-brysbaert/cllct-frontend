@@ -68,4 +68,19 @@ export class RegisterComponent implements OnInit {
     // this.authenticationService.register()
     this.registerForm.reset();
   }
+
+  getErrorMessage(errors: any) {
+    if (!errors) {
+      return null;
+    }
+    if (errors.required) {
+      return 'required';
+    } else if (errors.minlength) {
+      return `must be at least ${errors.minlength.requiredLength} characters`;
+    } else if (errors.usernameAlreadyExists) {
+      return `username is taken`;
+    } else if (errors.passwordsDiffer) {
+      return `passwords are not the same`;
+    }
+  }
 }
