@@ -70,11 +70,11 @@ export class AuthenticationService {
     }
   }
 
-  checkUsernameAvailability(username: string): Observable<boolean> {
+  checkUsernameAvailability = (username: string): Observable<boolean> => {
     return this.http.get<boolean>(`${environment.apiUrl}/user/checkusername`, {
       params: { username },
     });
-  }
+  };
 
   get user$(): BehaviorSubject<string> {
     return this._user$;
