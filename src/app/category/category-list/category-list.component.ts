@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { Category } from '../category';
 import { CategoryDataService } from '../category-data.service';
 import { Observable } from 'rxjs';
 import { Animations } from '../../animations';
-import { map, shareReplay } from 'rxjs/operators';
+import { HandsetService } from '../../core/handset.service';
 
 @Component({
   selector: 'app-category-list',
@@ -22,16 +21,11 @@ export class CategoryListComponent implements OnInit {
   dataSource = new MatTreeNestedDataSource<Category>();
   public isCollapsed: boolean = true;
   // for changing layout for devices with narrow screens (i.e. phones)
-  isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
-    .pipe(
-      map((result) => result.matches),
-      shareReplay()
-    );
+  isHandset$: Observable<boolean>;
 
   constructor(
     private categoryDataService: CategoryDataService,
-    private breakpointObserver: BreakpointObserver
+    private handsetService: HandsetService
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +33,7 @@ export class CategoryListComponent implements OnInit {
     this._fetchCategories$.subscribe(
       (response) => (this.dataSource.data = response)
     );
+    this.isHandset$ = this.handsetService.isHandset$;
   }
 
   get categories$(): Observable<Category[]> {
