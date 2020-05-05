@@ -4,10 +4,7 @@
       <mat-card-title>Register</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form
-        [formGroup]="registerForm"
-        (ngSubmit)="onSubmit(registerForm.value)"
-      >
+      <form [formGroup]="registerForm" (keydown.enter)="onSubmit()">
         <mat-form-field>
           <input
             matInput
@@ -81,7 +78,18 @@
           </mat-error>
         </span>
       </form>
-      <button mat-flat-button color="primary">Register</button>
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="onSubmit()"
+        type="submit"
+        [disabled]="registerForm.invalid"
+      >
+        Register
+      </button>
     </mat-card-content>
+  </mat-card>
+  <mat-card class="error" *ngIf="errorMessage">
+    error: {{ errorMessage }}
   </mat-card>
 </div>

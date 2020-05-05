@@ -10,6 +10,8 @@ import {
 import { AuthenticationService } from '../authentication.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 function serverSideValidateUsername(
   checkAvailabilityFn: (username: string) => Observable<boolean>
@@ -38,10 +40,13 @@ function comparePasswords(control: AbstractControl): ValidationErrors {
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  registerForm: FormGroup;
+  public registerForm: FormGroup;
+  public errorMessage: string = '';
+
   constructor(
     private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -63,10 +68,37 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  onSubmit(registerData) {
-    console.log(registerData);
-    // this.authenticationService.register()
-    this.registerForm.reset();
+  onSubmit() {
+    if (this.registerForm.invalid) return;
+    console.log('submitted');
+    this.authenticationService
+      .register(
+        this.registerForm.value.username,
+        this.registerForm.value.passwordGroup.password
+      )
+      .subscribe(
+        (val) => {
+          if (val) {
+            if (this.authenticationService.redirectUrl) {
+              this.router.navigateByUrl(this.authenticationService.redirectUrl);
+              this.authenticationService.redirectUrl = undefined;
+            } else {
+              // TODO: change this to proper url (/category/all or something like that)
+              this.router.navigate(['overview']);
+            }
+          } else {
+            this.errorMessage = 'could not login';
+          }
+        },
+        (err: HttpErrorResponse) => {
+          console.log(err);
+          if (err.error instanceof Error) {
+            this.errorMessage = `Error while trying to login user ${this.registerForm.value.username}: ${err.error.message}`;
+          } else {
+            this.errorMessage = `Error ${err.status} while trying to login user ${this.registerForm.value.username}: ${err.error}`;
+          }
+        }
+      );
   }
 
   getErrorMessage(errors: any) {
