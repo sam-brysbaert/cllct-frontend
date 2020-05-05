@@ -8,11 +8,14 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class FilterTermService {
   private termSource = new BehaviorSubject('');
-  currentTerm = this.termSource.asObservable();
 
   constructor() {}
 
   changeTerm(term: string) {
     this.termSource.next(term);
+  }
+
+  get currentTerm() {
+    return this.termSource.asObservable();
   }
 }

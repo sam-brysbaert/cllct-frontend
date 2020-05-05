@@ -9,6 +9,7 @@
             <input
               matInput
               (keyup)="updateFilterTerm($event.target.value)"
+              (keydown.enter)="$event.preventDefault()"
               placeholder="Filter by name, tag or url"
             />
           </mat-form-field>

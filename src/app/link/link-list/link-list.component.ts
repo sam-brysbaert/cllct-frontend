@@ -3,7 +3,7 @@ import { LinkDataService } from '../link-data.service';
 import { Link } from '../link';
 import { Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
-import { FilterTermService } from '../../filter-term.service';
+import { FilterTermService } from '../../shared/filter-term.service';
 
 @Component({
   selector: 'app-link-list',
