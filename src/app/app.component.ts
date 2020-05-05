@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ThemeService } from './core/theme.service';
-import { FilterTermService } from './shared/filter-term.service';
+import { ThemeService } from './services/theme.service';
+import { FilterTermService } from './services/filter-term.service';
 
 @Component({
   selector: 'app-root',

@@ -5,7 +5,7 @@ import { Category } from '../category';
 import { CategoryDataService } from '../category-data.service';
 import { Observable } from 'rxjs';
 import { Animations } from '../../animations';
-import { HandsetService } from '../../core/handset.service';
+import { HandsetService } from '../../services/handset.service';
 
 @Component({
   selector: 'app-category-list',
