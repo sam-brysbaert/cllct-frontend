@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       username: [
         '',
-        [Validators.required],
+        [Validators.required, Validators.maxLength(16)],
         serverSideValidateUsername(
           this.authenticationService.checkUsernameAvailability
         ),
@@ -113,6 +113,8 @@ export class RegisterComponent implements OnInit {
       return `username is taken`;
     } else if (errors.passwordsDiffer) {
       return `passwords are not the same`;
+    } else if (errors.maxlength) {
+      return `username must not be longer than 16 characters`;
     }
   }
 }

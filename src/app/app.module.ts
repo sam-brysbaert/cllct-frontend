@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { UserModule } from './user/user.module';
 import { OverviewComponent } from './overview/overview.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { OverviewComponent } from './overview/overview.component';
     MatInputModule,
     MatSlideToggleModule,
     UserModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

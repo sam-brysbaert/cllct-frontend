@@ -12,10 +12,16 @@
       font-size: 30px;
     }
 
+    mat-icon {
+      color: mat-contrast($primary, 500) !important;
+    }
+
+    .menuWrapper {
+      background-color: mat-color($primary) !important;
+    }
+
     .mat-form-field-label,
-    mat-form-field,
-    #searchIcon,
-    #theme-container mat-icon {
+    mat-form-field {
       color: mat-contrast($primary, 500) !important;
     }
     .mat-form-field-underline {
