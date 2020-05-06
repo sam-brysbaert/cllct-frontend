@@ -29,4 +29,8 @@ export class LinkListComponent implements OnInit {
   get links$(): Observable<Link[]> {
     return this._fetchLinks$;
   }
+
+  createLink() {
+    this.linkDataService.createLink('archlinux', 'http://www.archlinux.org');
+  }
 }

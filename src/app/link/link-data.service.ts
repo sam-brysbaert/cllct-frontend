@@ -30,6 +30,13 @@ export class LinkDataService {
       .subscribe((links) => this._links$.next(links));
   }
 
+  createLink(name: string, path: string): void {
+    let link = { name, path, categoryId: 1 };
+    this.http
+      .post(`${environment.apiUrl}/collect/link`, link)
+      .subscribe(() => this.updateLinks());
+  }
+
   set categoryId(id: number) {
     this._currentCategoryId = id;
     this.updateLinks();
