@@ -34,7 +34,7 @@
       </div>
       <mat-menu #appMenu="matMenu">
         <div class="username">{{ user$ | async }}</div>
-        <button mat-menu-item>Logout</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
       </mat-menu>
     </div>
   </div>

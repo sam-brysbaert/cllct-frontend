@@ -30,4 +30,8 @@ export class HeaderComponent implements OnInit {
   updateFilterTerm(term: string) {
     this.filterTermService.changeTerm(term);
   }
+
+  logout() {
+    this.authenticationService.logout();
+  }
 }

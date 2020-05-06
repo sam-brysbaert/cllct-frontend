@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { map, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class AuthenticationService {
   private _user$: BehaviorSubject<string>;
   public redirectUrl: string = null;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     let parsedToken = this.parseJwt(localStorage.getItem(this._tokenKey));
     if (parsedToken) {
       const expires =
@@ -70,6 +71,7 @@ export class AuthenticationService {
       localStorage.removeItem('currentUser');
       this._user$.next(null);
     }
+    this.router.navigate(['']);
   }
 
   checkUsernameAvailability = (username: string): Observable<boolean> => {
