@@ -44,7 +44,8 @@ export class CategoryListComponent implements OnInit {
 
   onSelect(category: Category) {
     this.selectedCategory = category;
-    this.linkDataService.categoryId = category ? category.id : null;
+    this.linkDataService.categoryId = !!category ? category.id : null;
+    this.isCollapsed = true;
   }
 
   hasChild = (_: number, node: Category) =>

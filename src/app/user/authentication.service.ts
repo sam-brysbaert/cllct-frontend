@@ -91,4 +91,9 @@ export class AuthenticationService {
     const base64 = base64Token.replace(/-/g, '+').replace(/_/g, '/');
     return JSON.parse(window.atob(base64));
   }
+
+  get token(): string {
+    const localToken = localStorage.getItem(this._tokenKey);
+    return !!localToken ? localToken : '';
+  }
 }

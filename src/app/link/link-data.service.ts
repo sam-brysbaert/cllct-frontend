@@ -22,15 +22,10 @@ export class LinkDataService {
     this.http
       .get<Link[]>(
         `${environment.apiUrl}/collect/link/list${
-          this._currentCategoryId
+          !!this._currentCategoryId
             ? `?categoryId=${this._currentCategoryId}`
             : ''
-        }`,
-        {
-          headers: new HttpHeaders({
-            authorization: `Bearer ${localStorage.getItem('currentUser')}`,
-          }),
-        }
+        }`
       )
       .subscribe((links) => this._links$.next(links));
   }

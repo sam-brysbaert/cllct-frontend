@@ -14,12 +14,7 @@ export class CategoryDataService {
 
   public getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(
-      `${environment.apiUrl}/collect/category/list`,
-      {
-        headers: new HttpHeaders({
-          authorization: `Bearer ${localStorage.getItem('currentUser')}`,
-        }),
-      }
+      `${environment.apiUrl}/collect/category/list`
     );
   }
 }

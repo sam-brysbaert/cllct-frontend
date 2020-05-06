@@ -20,6 +20,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { UserModule } from './user/user.module';
 import { OverviewComponent } from './overview/overview.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { httpInterceptorProviders } from './http-interceptors/index';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { MatMenuModule } from '@angular/material/menu';
     UserModule,
     MatMenuModule,
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
