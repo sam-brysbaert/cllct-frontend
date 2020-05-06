@@ -10,8 +10,15 @@ import { LinkFilterPipe } from './link-filter.pipe';
 
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
+import { NewLinkComponent } from './new-link/new-link.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
-  declarations: [LinkListComponent, LinkDetailsComponent, LinkFilterPipe],
+  declarations: [
+    LinkListComponent,
+    LinkDetailsComponent,
+    LinkFilterPipe,
+    NewLinkComponent,
+  ],
   imports: [
     CommonModule,
     MatCardModule,
@@ -20,6 +27,7 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     MatButtonModule,
     LayoutModule,
+    MatDialogModule,
   ],
   exports: [LinkListComponent, LinkDetailsComponent],
 })

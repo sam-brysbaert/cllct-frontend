@@ -4,6 +4,8 @@ import { Link } from '../link';
 import { Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
 import { FilterTermService } from '../../services/filter-term.service';
+import { MatDialog } from '@angular/material/dialog';
+import { NewLinkComponent } from '../new-link/new-link.component';
 
 @Component({
   selector: 'app-link-list',
@@ -16,7 +18,8 @@ export class LinkListComponent implements OnInit {
 
   constructor(
     private linkDataService: LinkDataService,
-    private filterTermService: FilterTermService
+    private filterTermService: FilterTermService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -30,7 +33,9 @@ export class LinkListComponent implements OnInit {
     return this._fetchLinks$;
   }
 
-  createLink() {
-    this.linkDataService.createLink('archlinux', 'http://www.archlinux.org');
+  openNewLinkDialog(): void {
+    const dialogRef = this.dialog.open(NewLinkComponent);
+
+    dialogRef.afterClosed().subscribe(console.log);
   }
 }

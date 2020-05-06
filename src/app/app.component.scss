@@ -13,6 +13,19 @@
 
   min-height: 100vh;
   height: auto;
+
+  @media (max-width: map-get($breakpoints, md)) {
+    grid-gap: 5px;
+    grid-template-columns: 0 1fr 0;
+  }
+
+  @media (min-width: map-get($breakpoints, md)) and (max-width: map-get($breakpoints, lg)) {
+    grid-template-columns: 10% 1fr 10%;
+  }
+
+  @media (min-width: map-get($breakpoints, lg)) {
+    grid-template-columns: 20% 1fr 20%;
+  }
 }
 
 app-header {
