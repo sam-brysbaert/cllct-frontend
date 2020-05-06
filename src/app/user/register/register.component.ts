@@ -50,22 +50,28 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
-      username: [
-        '',
-        [Validators.required, Validators.maxLength(16)],
-        serverSideValidateUsername(
-          this.authenticationService.checkUsernameAvailability
+    this.registerForm = this.formBuilder.group(
+      {
+        username: [
+          '',
+          {
+            validators: [Validators.required, Validators.maxLength(16)],
+            updateOn: 'blur',
+            asyncValidators: serverSideValidateUsername(
+              this.authenticationService.checkUsernameAvailability
+            ),
+          },
+        ],
+        passwordGroup: this.formBuilder.group(
+          {
+            password: ['', [Validators.required, Validators.minLength(8)]],
+            confirmPassword: ['', Validators.required],
+          },
+          { validators: [comparePasswords], updateOn: 'change' }
         ),
-      ],
-      passwordGroup: this.formBuilder.group(
-        {
-          password: ['', [Validators.required, Validators.minLength(8)]],
-          confirmPassword: ['', Validators.required],
-        },
-        { validator: comparePasswords }
-      ),
-    });
+      }
+      // { updateOn: 'blur' }
+    );
   }
 
   onSubmit() {
@@ -93,9 +99,9 @@ export class RegisterComponent implements OnInit {
         (err: HttpErrorResponse) => {
           console.log(err);
           if (err.error instanceof Error) {
-            this.errorMessage = `Error while trying to login user ${this.registerForm.value.username}: ${err.error.message}`;
+            this.errorMessage = `${err.error.message}`;
           } else {
-            this.errorMessage = `Error ${err.status} while trying to login user ${this.registerForm.value.username}: ${err.error}`;
+            this.errorMessage = `Error ${err.status}: ${err.error.message}`;
           }
         }
       );
@@ -116,5 +122,21 @@ export class RegisterComponent implements OnInit {
     } else if (errors.maxlength) {
       return `username must not be longer than 16 characters`;
     }
+  }
+
+  get username() {
+    return this.registerForm.get('username');
+  }
+
+  get password() {
+    return this.registerForm.get('passwordGroup').get('password');
+  }
+
+  get confirmPassword() {
+    return this.registerForm.get('passwordGroup').get('confirmPassword');
+  }
+
+  get passwordGroup() {
+    return this.registerForm.get('passwordGroup');
   }
 }

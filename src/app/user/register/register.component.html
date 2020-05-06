@@ -12,13 +12,8 @@
             formControlName="username"
             placeholder="username"
           />
-          <mat-error
-            *ngIf="
-              registerForm.get('username').errors &&
-              registerForm.get('username').touched
-            "
-          >
-            {{ getErrorMessage(registerForm.get("username").errors) }}
+          <mat-error *ngIf="username.errors && username.touched">
+            {{ getErrorMessage(username.errors) }}
           </mat-error>
         </mat-form-field>
         <span formGroupName="passwordGroup">
@@ -30,17 +25,8 @@
               formControlName="password"
               placeholder="password"
             />
-            <mat-error
-              *ngIf="
-                registerForm.get('passwordGroup').get('password') &&
-                registerForm.get('passwordGroup').get('password').touched
-              "
-            >
-              {{
-                getErrorMessage(
-                  registerForm.get("passwordGroup").get("password").errors
-                )
-              }}
+            <mat-error *ngIf="password && password.touched">
+              {{ getErrorMessage(password.errors) }}
             </mat-error>
           </mat-form-field>
           <mat-form-field>
@@ -52,44 +38,33 @@
               placeholder="confirm password"
             />
             <mat-error
-              *ngIf="
-                registerForm.get('passwordGroup').get('confirmPassword')
-                  .errors &&
-                registerForm.get('passwordGroup').get('confirmPassword').touched
-              "
+              *ngIf="confirmPassword.errors && confirmPassword.touched"
             >
-              {{
-                getErrorMessage(
-                  registerForm.get("passwordGroup").get("confirmPassword")
-                    .errors
-                )
-              }}
+              {{ getErrorMessage(confirmPassword.errors) }}
             </mat-error>
           </mat-form-field>
           <mat-error
             *ngIf="
-              registerForm.get('passwordGroup').errors &&
-              registerForm.get('passwordGroup').get('confirmPassword')
-                .touched &&
-              registerForm.get('passwordGroup').get('password').touched
+              passwordGroup.errors &&
+              confirmPassword.touched &&
+              password.touched
             "
           >
-            {{ getErrorMessage(registerForm.get("passwordGroup").errors) }}
+            {{ getErrorMessage(passwordGroup.errors) }}
           </mat-error>
         </span>
       </form>
       <button
         mat-flat-button
         color="primary"
-        (click)="onSubmit()"
+        (click)="registerForm.valid ? onSubmit() : null"
         type="submit"
-        [disabled]="registerForm.invalid"
       >
         Register
       </button>
     </mat-card-content>
   </mat-card>
   <mat-card class="error" *ngIf="errorMessage">
-    error: {{ errorMessage }}
+    error: {{ errorMessage | json }}
   </mat-card>
 </div>
