@@ -3,6 +3,7 @@ import { ThemeService } from '../services/theme.service';
 import { Observable } from 'rxjs';
 import { FilterTermService } from '../services/filter-term.service';
 import { AuthenticationService } from '../user/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private themeService: ThemeService,
     private filterTermService: FilterTermService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -33,5 +35,13 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
+  }
+
+  login() {
+    this.router.navigateByUrl('/login');
+  }
+
+  searchVisible(): boolean {
+    return this.router.url === '/overview';
   }
 }

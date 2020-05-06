@@ -1,1 +1,43 @@
-<p>login works!</p>
+<div id="loginWrapper">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (keydown.enter)="onSubmit()">
+        <mat-form-field>
+          <input
+            matInput
+            id="username"
+            formControlName="username"
+            placeholder="username"
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            id="password"
+            formControlName="password"
+            type="password"
+            placeholder="password"
+          />
+        </mat-form-field>
+      </form>
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="loginForm.valid ? onSubmit() : null"
+        type="submit"
+      >
+        Login
+      </button>
+      <div id="registerLink">
+        <a href="/register">Don't have an account yet? Create one here.</a>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="error" *ngIf="errorMessage">
+    error: {{ errorMessage | json }}
+  </mat-card>
+</div>

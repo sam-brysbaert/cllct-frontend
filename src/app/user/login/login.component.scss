@@ -1,0 +1,37 @@
+@import "../../../_global.scss";
+
+#loginWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10% 1rem 0 1rem;
+}
+
+button {
+  margin-top: 1rem;
+}
+
+mat-form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+#registerLink {
+  padding-top: 1rem;
+  a {
+    text-decoration: none;
+  }
+}
+
+@media (min-width: map-get($breakpoints, sm)) {
+  mat-card {
+    width: 20rem;
+  }
+}
+
+@media (max-width: map-get($breakpoints, sm)) {
+  mat-card {
+    width: 95%;
+  }
+}

@@ -2,7 +2,7 @@
   <div class="header-content">
     <div id="main-title">Cllct</div>
     <div id="tools">
-      <div id="search">
+      <div id="search" *ngIf="(user$ | async) && searchVisible()">
         <form action="">
           <mat-icon id="searchIcon">search</mat-icon>
           <mat-form-field>
@@ -34,7 +34,16 @@
       </div>
       <mat-menu #appMenu="matMenu">
         <div class="username">{{ user$ | async }}</div>
-        <button mat-menu-item (click)="logout()">Logout</button>
+        <button
+          *ngIf="user$ | async; else notLoggedIn"
+          mat-menu-item
+          (click)="logout()"
+        >
+          Logout
+        </button>
+        <ng-template #notLoggedIn>
+          <button mat-menu-item (click)="login()">Login</button>
+        </ng-template>
       </mat-menu>
     </div>
   </div>
