@@ -20,7 +20,7 @@ export class LinkListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._fetchLinks$ = this.linkDataService.getLinks();
+    this._fetchLinks$ = this.linkDataService.links$;
     this.filterTermService.currentTerm.subscribe(
       (term) => (this.filterTerm = term)
     );

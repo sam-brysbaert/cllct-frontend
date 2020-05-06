@@ -6,6 +6,7 @@ import { CategoryDataService } from '../category-data.service';
 import { Observable } from 'rxjs';
 import { Animations } from '../../animations';
 import { HandsetService } from '../../services/handset.service';
+import { LinkDataService } from '../../link/link-data.service';
 
 @Component({
   selector: 'app-category-list',
@@ -15,7 +16,7 @@ import { HandsetService } from '../../services/handset.service';
 })
 export class CategoryListComponent implements OnInit {
   private _fetchCategories$: Observable<Category[]>;
-  selectedCategory: Category;
+  selectedCategory: Category = null;
   // tree view
   treeControl = new NestedTreeControl<Category>((node) => node.children);
   dataSource = new MatTreeNestedDataSource<Category>();
@@ -25,7 +26,8 @@ export class CategoryListComponent implements OnInit {
 
   constructor(
     private categoryDataService: CategoryDataService,
-    private handsetService: HandsetService
+    private handsetService: HandsetService,
+    private linkDataService: LinkDataService
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +44,7 @@ export class CategoryListComponent implements OnInit {
 
   onSelect(category: Category) {
     this.selectedCategory = category;
+    this.linkDataService.categoryId = category ? category.id : null;
   }
 
   hasChild = (_: number, node: Category) =>
