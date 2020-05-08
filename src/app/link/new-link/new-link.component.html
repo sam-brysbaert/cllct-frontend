@@ -1,1 +1,57 @@
-<p>new-link works!</p>
+<div id="newLinkWrapper">
+  <h1>Add New Link</h1>
+  <form [formGroup]="linkForm" (keydown.enter)="onSubmit()">
+    <mat-form-field>
+      <input matInput id="name" formControlName="name" placeholder="name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        id="url"
+        formControlName="url"
+        type="url"
+        placeholder="url"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select
+        id="categoryId"
+        formControlName="categoryId"
+        placeholder="categoryId"
+      >
+        <mat-option
+          *ngFor="let cat of categoriesFlat"
+          style.margin-left="{{ cat.level }}rem"
+          [value]="cat.id"
+        >
+          <span
+            class="dot"
+            [style.background-color]="cat.color ? cat.color : 'grey'"
+          ></span>
+          <span class="category-name">{{ cat.name }}</span>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <div
+    *ngFor="let cat of categoriesFlat"
+    style.margin-left="{{ cat.level }}rem"
+  >
+    <span
+      class="dot"
+      [style.background-color]="cat.color ? cat.color : 'grey'"
+    ></span>
+    <span class="category-name">{{ cat.name }}</span>
+  </div>
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="linkForm.valid ? onSubmit() : null"
+    type="submit"
+  >
+    Login
+  </button>
+</div>

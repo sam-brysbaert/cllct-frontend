@@ -7,11 +7,15 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LinkFilterPipe } from './link-filter.pipe';
-
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule } from '@angular/material/button';
 import { NewLinkComponent } from './new-link/new-link.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+
 @NgModule({
   declarations: [
     LinkListComponent,
@@ -28,6 +32,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule,
     LayoutModule,
     MatDialogModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
   ],
   exports: [LinkListComponent, LinkDetailsComponent],
 })
