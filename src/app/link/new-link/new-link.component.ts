@@ -19,6 +19,7 @@ export class NewLinkComponent implements OnInit {
   public linkForm: FormGroup;
   categories$: Observable<Category[]>;
   categoriesFlat;
+  currentCategory;
 
   constructor(
     public dialogRef: MatDialogRef<NewLinkComponent>,
@@ -30,21 +31,26 @@ export class NewLinkComponent implements OnInit {
   ngOnInit(): void {
     this.linkForm = this.formBuilder.group({
       name: ['', Validators.required],
-      url: ['', Validators.required],
+      path: ['', Validators.required],
       categoryId: ['', Validators.required],
     });
+
+    this.currentCategory = this.linkDataService.currentCategoryId;
     this.categories$ = this.categoryDataService.getCategories();
+
     this.categories$.subscribe((x) => {
       this.categoriesFlat = this.flattenCategories(x);
+      const toSelect = this.categoriesFlat.find(
+        (c) => c.id == this.currentCategory
+      );
+      this.linkForm
+        .get('categoryId')
+        .setValue(!!toSelect ? toSelect : this.categoriesFlat[0]);
     });
   }
 
   onNoClick(): void {
     this.dialogRef.close();
-  }
-
-  createLink() {
-    this.linkDataService.createLink('archlinux', 'http://www.archlinux.org');
   }
 
   flattenCategories(categories: Category[], level: number = 0) {
@@ -65,6 +71,7 @@ export class NewLinkComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.linkForm);
+    let link = this.linkForm.value;
+    this.linkDataService.createLink(link);
   }
 }

@@ -8,8 +8,8 @@
     <mat-form-field>
       <input
         matInput
-        id="url"
-        formControlName="url"
+        id="path"
+        formControlName="path"
         type="url"
         placeholder="url"
       />
@@ -19,33 +19,23 @@
       <mat-select
         id="categoryId"
         formControlName="categoryId"
-        placeholder="categoryId"
+        placeholder="category"
       >
         <mat-option
           *ngFor="let cat of categoriesFlat"
           style.margin-left="{{ cat.level }}rem"
-          [value]="cat.id"
+          [value]="cat"
         >
-          <span
+          {{ cat.name }}
+          <!-- <span
             class="dot"
             [style.background-color]="cat.color ? cat.color : 'grey'"
           ></span>
-          <span class="category-name">{{ cat.name }}</span>
+          <span class="category-name">{{ cat.name }}</span> -->
         </mat-option>
       </mat-select>
     </mat-form-field>
   </form>
-
-  <div
-    *ngFor="let cat of categoriesFlat"
-    style.margin-left="{{ cat.level }}rem"
-  >
-    <span
-      class="dot"
-      [style.background-color]="cat.color ? cat.color : 'grey'"
-    ></span>
-    <span class="category-name">{{ cat.name }}</span>
-  </div>
   <button
     mat-flat-button
     color="primary"
