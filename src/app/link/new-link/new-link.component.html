@@ -29,11 +29,7 @@
           style.margin-left="{{ cat.level }}rem"
           [value]="cat"
         >
-          <span
-            class="dot"
-            [style.background-color]="cat.color ? cat.color : 'grey'"
-          ></span>
-          <span class="category-name">{{ cat.name }}</span>
+          <app-category [category]="cat"></app-category>
         </mat-option>
       </mat-select>
     </mat-form-field>

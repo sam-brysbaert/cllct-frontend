@@ -9,9 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule, MatDivider } from '@angular/material/divider';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
-  declarations: [CategoryListComponent],
+  declarations: [CategoryListComponent, CategoryComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -22,6 +23,6 @@ import { MatDividerModule, MatDivider } from '@angular/material/divider';
     LayoutModule,
     MatDividerModule,
   ],
-  exports: [CategoryListComponent],
+  exports: [CategoryListComponent, CategoryComponent],
 })
 export class CategoryModule {}

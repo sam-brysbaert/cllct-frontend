@@ -49,11 +49,7 @@
             [class.selected]="node === selectedCategory"
             (click)="onSelect(node)"
           >
-            <span
-              class="dot"
-              [style.background-color]="node.color ? node.color : 'grey'"
-            ></span>
-            <span class="category-name">{{ node.name }}</span>
+            <app-category [category]="node"></app-category>
           </button>
           <button mat-icon-button disabled></button>
         </li>
@@ -68,11 +64,7 @@
               [class.selected]="node === selectedCategory"
               (click)="onSelect(node)"
             >
-              <span
-                class="dot"
-                [style.background-color]="node.color ? node.color : 'grey'"
-              ></span>
-              <span class="category-name">{{ node.name }}</span>
+              <app-category [category]="node"></app-category>
             </button>
             <button mat-icon-button matTreeNodeToggle>
               <mat-icon>{{
