@@ -30,9 +30,7 @@ export class LinkDataService {
       .subscribe((links) => this._links$.next(links));
   }
 
-  createLink(link): void {
-    link.categoryId = link.categoryId.id;
-    console.log(link);
+  createLink(link: Link): void {
     this.http
       .post(`${environment.apiUrl}/collect/link`, link)
       .subscribe(() => this.updateLinks());

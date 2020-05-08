@@ -76,7 +76,6 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     if (this.registerForm.invalid) return;
-    console.log('submitted');
     this.authenticationService
       .register(
         this.registerForm.value.username,
@@ -97,7 +96,6 @@ export class RegisterComponent implements OnInit {
           }
         },
         (err: HttpErrorResponse) => {
-          console.log(err);
           if (err.error instanceof Error) {
             this.errorMessage = `${err.error.message}`;
           } else {

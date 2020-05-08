@@ -1,10 +1,12 @@
 <div id="newLinkWrapper">
   <h1>Add New Link</h1>
-  <form [formGroup]="linkForm" (keydown.enter)="onSubmit()">
+  <form [formGroup]="link" (keydown.enter)="onSubmit()">
+    <!-- name -->
     <mat-form-field>
       <input matInput id="name" formControlName="name" placeholder="name" />
     </mat-form-field>
 
+    <!-- path -->
     <mat-form-field>
       <input
         matInput
@@ -15,31 +17,33 @@
       />
     </mat-form-field>
 
+    <!-- category dropdown -->
     <mat-form-field>
       <mat-select
-        id="categoryId"
-        formControlName="categoryId"
+        id="category"
+        formControlName="category"
         placeholder="category"
       >
         <mat-option
-          *ngFor="let cat of categoriesFlat"
+          *ngFor="let cat of categories"
           style.margin-left="{{ cat.level }}rem"
           [value]="cat"
         >
-          {{ cat.name }}
-          <!-- <span
+          <span
             class="dot"
             [style.background-color]="cat.color ? cat.color : 'grey'"
           ></span>
-          <span class="category-name">{{ cat.name }}</span> -->
+          <span class="category-name">{{ cat.name }}</span>
         </mat-option>
       </mat-select>
     </mat-form-field>
   </form>
+
+  <!-- submit button -->
   <button
     mat-flat-button
     color="primary"
-    (click)="linkForm.valid ? onSubmit() : null"
+    (click)="link.valid ? onSubmit() : null"
     type="submit"
   >
     Login

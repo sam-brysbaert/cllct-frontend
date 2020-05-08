@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Category } from './category';
+import { Category, FlatCategory } from './category';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { debounceTime, delay } from 'rxjs/operators';
+import { debounceTime, delay, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -16,5 +16,32 @@ export class CategoryDataService {
     return this.http.get<Category[]>(
       `${environment.apiUrl}/collect/category/list`
     );
+  }
+
+  fetchFlatCategories(): Observable<FlatCategory[]> {
+    return this.getCategories().pipe(
+      map((cats) => {
+        return this.flattenCategories(cats);
+      })
+    );
+  }
+
+  // recursive function to convert a nested list of categories to
+  // a flat list with level property to show depth
+  flattenCategories(categories: Category[], level: number = 0): FlatCategory[] {
+    let categoriesFlat: FlatCategory[] = [];
+    categories.forEach((c) => {
+      categoriesFlat.push({ name: c.name, id: c.id, color: c.color, level });
+      if (this.hasChild(c)) {
+        categoriesFlat = categoriesFlat.concat(
+          this.flattenCategories(c.children, level + 1)
+        );
+      }
+    });
+    return categoriesFlat;
+  }
+
+  hasChild(cat: Category) {
+    return !!cat.children && cat.children.length > 0;
   }
 }
