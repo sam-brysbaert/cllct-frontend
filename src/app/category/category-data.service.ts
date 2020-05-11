@@ -28,16 +28,27 @@ export class CategoryDataService {
 
   // recursive function to convert a nested list of categories to
   // a flat list with level property to show depth
-  flattenCategories(categories: Category[], level: number = 0): FlatCategory[] {
+  flattenCategories(
+    categories: Category[],
+    level: number = 0,
+    parentId: number = null
+  ): FlatCategory[] {
     let categoriesFlat: FlatCategory[] = [];
     categories.forEach((c) => {
-      categoriesFlat.push({ name: c.name, id: c.id, color: c.color, level });
+      categoriesFlat.push({
+        name: c.name,
+        id: c.id,
+        color: c.color,
+        level,
+        parentId,
+      });
       if (this.hasChild(c)) {
         categoriesFlat = categoriesFlat.concat(
-          this.flattenCategories(c.children, level + 1)
+          this.flattenCategories(c.children, level + 1, c.id)
         );
       }
     });
+    console.log(categoriesFlat);
     return categoriesFlat;
   }
 

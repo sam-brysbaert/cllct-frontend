@@ -1,0 +1,43 @@
+<mat-accordion>
+  <mat-expansion-panel
+    *ngFor="let cat of categories"
+    (opened)="selectParentCategory(cat)"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <app-category
+          [category]="cat"
+          style.padding-left="{{ 1 + cat.level }}rem"
+        ></app-category>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <form [formGroup]="category" (keydown.enter)="onSubmit()">
+      <mat-form-field>
+        <mat-select
+          class="parentCategory"
+          formControlName="parentCategory"
+          placeholder="parentCategory"
+        >
+          <mat-option
+            *ngFor="let cat of categories"
+            style.padding-left="{{ 1 + cat.level }}rem"
+            [value]="cat"
+          >
+            <app-category [category]="cat"></app-category>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          class="password"
+          formControlName="password"
+          type="password"
+          placeholder="password"
+        />
+      </mat-form-field>
+    </form>
+  </mat-expansion-panel>
+</mat-accordion>

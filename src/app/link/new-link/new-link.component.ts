@@ -33,9 +33,7 @@ export class NewLinkComponent implements OnInit {
 
     this.categoryDataService.fetchFlatCategories().subscribe((cats) => {
       this.categories = cats;
-      // set category selected by default in dropdown to current category
-      const toSelect = cats.find((c) => c.id == this._currentCategoryId);
-      this.link.get('category').setValue(!!toSelect ? toSelect : cats[0]);
+      this.selectCategory(this._currentCategoryId);
     });
   }
 
@@ -47,5 +45,12 @@ export class NewLinkComponent implements OnInit {
     };
     this.linkDataService.createLink(link);
     this.dialogRef.close();
+  }
+
+  selectCategory(id: number) {
+    const toSelect = this.categories.find((c) => c.id === id);
+    this.link
+      .get('category')
+      .setValue(!!toSelect ? toSelect : this.categories[0]);
   }
 }
