@@ -1,22 +1,6 @@
 <div id="newLinkWrapper">
   <h1>Add New Link</h1>
   <form [formGroup]="link" (keydown.enter)="onSubmit()">
-    <!-- name -->
-    <mat-form-field>
-      <input matInput id="name" formControlName="name" placeholder="name" />
-    </mat-form-field>
-
-    <!-- path -->
-    <mat-form-field>
-      <input
-        matInput
-        id="path"
-        formControlName="path"
-        type="url"
-        placeholder="url"
-      />
-    </mat-form-field>
-
     <!-- category dropdown -->
     <mat-form-field>
       <mat-select
@@ -33,6 +17,22 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+
+    <!-- name -->
+    <mat-form-field>
+      <input matInput id="name" formControlName="name" placeholder="name" />
+    </mat-form-field>
+
+    <!-- path -->
+    <mat-form-field>
+      <input
+        matInput
+        id="path"
+        formControlName="path"
+        type="url"
+        placeholder="url"
+      />
+    </mat-form-field>
   </form>
 
   <!-- submit button -->
@@ -42,6 +42,6 @@
     (click)="link.valid ? onSubmit() : null"
     type="submit"
   >
-    Login
+    Add Link
   </button>
 </div>
