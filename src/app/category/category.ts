@@ -10,5 +10,5 @@ export interface FlatCategory extends Category {
   id: number;
   color: string;
   level: number;
-  parentId: number;
+  parentId?: number;
 }

@@ -1,0 +1,53 @@
+<div id="newCategoryWrapper">
+  <h1>Edit Category</h1>
+  <form [formGroup]="categoryForm" (keydown.enter)="onSubmit()">
+    <mat-form-field>
+      <mat-select
+        class="parentCategory"
+        formControlName="parentCategory"
+        placeholder="parent category"
+      >
+        <mat-option>
+          none
+        </mat-option>
+        <mat-option
+          *ngFor="let cat of categories"
+          style.padding-left="{{ 1 + cat.level }}rem"
+          [value]="cat"
+        >
+          <app-category [category]="cat"></app-category>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="colorPicker">
+      color
+      <span
+        [(colorPicker)]="categoryColor"
+        [style.background]="categoryColor"
+        [cpOutputFormat]="'hex'"
+        class="dot"
+        [style.background-color]="categoryColor"
+      ></span>
+    </div>
+
+    <mat-form-field>
+      <input
+        matInput
+        class="password"
+        formControlName="password"
+        type="password"
+        placeholder="password"
+      />
+    </mat-form-field>
+  </form>
+  <!-- submit button -->
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="categoryForm.valid ? onSubmit() : null"
+    type="submit"
+  >
+    Save Changes
+  </button>
+</div>

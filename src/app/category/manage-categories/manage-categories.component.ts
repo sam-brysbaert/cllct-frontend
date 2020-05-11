@@ -3,6 +3,8 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CategoryDataService } from '../category-data.service';
 import { Observable } from 'rxjs';
 import { FlatCategory } from '../category';
+import { MatDialog } from '@angular/material/dialog';
+import { EditCategoryComponent } from '../edit-category/edit-category.component';
 
 @Component({
   selector: 'app-manage-categories',
@@ -10,33 +12,36 @@ import { FlatCategory } from '../category';
   styleUrls: ['./manage-categories.component.scss'],
 })
 export class ManageCategoriesComponent implements OnInit {
-  public category: FormGroup;
   public errorMessage: string = '';
   categories: FlatCategory[];
 
   constructor(
     private formBuilder: FormBuilder,
-    private categoryDataService: CategoryDataService
+    private categoryDataService: CategoryDataService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    this.category = this.formBuilder.group({
-      parentCategory: ['', Validators.required],
-      password: ['', Validators.required],
-    });
-
     this.categoryDataService.fetchFlatCategories().subscribe((cats) => {
       this.categories = cats;
     });
   }
 
-  onSubmit() {
-    console.log('sumbitted');
+  openNewCategoryDialog(): void {
+    const dialogRef = this.dialog.open(EditCategoryComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
   }
 
-  selectParentCategory(cat: FlatCategory) {
-    const toSelect = this.categories.find((c) => c.id === cat.parentId);
-    if (!toSelect) return;
-    this.category.get('parentCategory').setValue(toSelect);
+  openEditCategoryDialog(category: FlatCategory): void {
+    const dialogRef = this.dialog.open(EditCategoryComponent, {
+      data: category,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
   }
 }

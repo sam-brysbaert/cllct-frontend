@@ -1,43 +1,17 @@
-<mat-accordion>
-  <mat-expansion-panel
-    *ngFor="let cat of categories"
-    (opened)="selectParentCategory(cat)"
-  >
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <app-category
-          [category]="cat"
-          style.padding-left="{{ 1 + cat.level }}rem"
-        ></app-category>
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-
-    <form [formGroup]="category" (keydown.enter)="onSubmit()">
-      <mat-form-field>
-        <mat-select
-          class="parentCategory"
-          formControlName="parentCategory"
-          placeholder="parentCategory"
-        >
-          <mat-option
-            *ngFor="let cat of categories"
-            style.padding-left="{{ 1 + cat.level }}rem"
-            [value]="cat"
-          >
-            <app-category [category]="cat"></app-category>
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field>
-        <input
-          matInput
-          class="password"
-          formControlName="password"
-          type="password"
-          placeholder="password"
-        />
-      </mat-form-field>
-    </form>
-  </mat-expansion-panel>
-</mat-accordion>
+<mat-card *ngFor="let cat of categories">
+  <app-category
+    [category]="cat"
+    style.padding-left="{{ 1 + cat.level }}rem"
+  ></app-category>
+  <div>
+    <button mat-flat-button (click)="openEditCategoryDialog(cat)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-flat-button><mat-icon>delete</mat-icon></button>
+  </div>
+</mat-card>
+<div class="buttonContainer">
+  <button mat-fab class="newCategoryButton">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

@@ -1,4 +1,23 @@
-mat-form-field {
+@import "../../../global";
+mat-card {
+  margin: 0.5rem;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttonContainer {
+  position: fixed;
+  @media (max-width: map-get($breakpoints, md)) {
+    right: 1rem;
+    bottom: 1rem;
+  }
+  @media (min-width: map-get($breakpoints, md)) and (max-width: map-get($breakpoints, lg)) {
+    right: calc(10% - 5rem);
+    bottom: 1rem;
+  }
+  @media (min-width: map-get($breakpoints, lg)) {
+    right: calc(20% - 5rem);
+    bottom: 1rem;
+  }
 }

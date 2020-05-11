@@ -55,4 +55,12 @@ export class CategoryDataService {
   hasChild(cat: Category) {
     return !!cat.children && cat.children.length > 0;
   }
+
+  getBy(id: number): Category {
+    let category: Category;
+    this.getCategories().subscribe(
+      (response) => (category = response.find((cat) => cat.id === id))
+    );
+    return category;
+  }
 }

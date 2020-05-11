@@ -15,12 +15,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { EditCategoryComponent } from './edit-category/edit-category.component';
 
 @NgModule({
   declarations: [
     CategoryListComponent,
     CategoryComponent,
     ManageCategoriesComponent,
+    EditCategoryComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +39,7 @@ import { MatSelectModule } from '@angular/material/select';
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule,
+    ColorPickerModule,
   ],
   exports: [CategoryListComponent, CategoryComponent],
 })
