@@ -8,7 +8,11 @@ import { ManageCategoriesComponent } from './category/manage-categories/manage-c
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
-  { path: 'overview', canActivate: [AuthGuard], component: OverviewComponent },
+  {
+    path: 'category/:id',
+    canActivate: [AuthGuard],
+    component: OverviewComponent,
+  },
   { path: 'login', component: LoginComponent },
   { path: 'manage', component: ManageCategoriesComponent },
 ];

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { Animations } from '../../animations';
 import { HandsetService } from '../../services/handset.service';
 import { LinkDataService } from '../../link/link-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-category-list',
@@ -27,7 +28,8 @@ export class CategoryListComponent implements OnInit {
   constructor(
     private categoryDataService: CategoryDataService,
     private handsetService: HandsetService,
-    private linkDataService: LinkDataService
+    private linkDataService: LinkDataService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -44,8 +46,9 @@ export class CategoryListComponent implements OnInit {
 
   onSelect(category: Category) {
     this.selectedCategory = category;
-    this.linkDataService.categoryId = !!category ? category.id : null;
+    // this.linkDataService.categoryId = !!category ? category.id : null;
     this.isCollapsed = true;
+    this.router.navigate([`/category/${category.id}`]);
   }
 
   hasChild = (_: number, node: Category) =>
