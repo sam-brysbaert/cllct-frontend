@@ -1,0 +1,15 @@
+@mixin footer-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .footer-wrapper {
+    background-color: rgba(100, 100, 100, 0.3);
+
+    mat-icon {
+      color: red;
+    }
+  }
+}

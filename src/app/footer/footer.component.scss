@@ -1,0 +1,19 @@
+@import "../../global";
+
+.footer-wrapper {
+  height: 2rem;
+  position: relative;
+  justify-content: center;
+  display: flex;
+  // border-bottom: 1px solid mat-color($primary, divider);
+}
+
+.footer-text {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+mat-icon {
+  padding: 0 0.25rem;
+}
