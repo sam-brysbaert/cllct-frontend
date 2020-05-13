@@ -11,7 +11,7 @@ export class HandsetService {
 
   constructor(private breakpointObserver: BreakpointObserver) {
     this._isHandset$ = this.breakpointObserver
-      .observe(Breakpoints.Handset)
+      .observe('(max-width: 599px)')
       .pipe(
         map((result) => result.matches),
         shareReplay()
