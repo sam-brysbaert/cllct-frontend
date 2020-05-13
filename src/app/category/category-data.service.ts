@@ -58,7 +58,6 @@ export class CategoryDataService {
         );
       }
     });
-    console.log(categoriesFlat);
     return categoriesFlat;
   }
 
@@ -74,9 +73,15 @@ export class CategoryDataService {
     return category;
   }
 
-  postCategory(category: { name: any; parentId: any }): void {
+  addCategory(category: { name: string; parentId: number }): void {
     this.http
       .post(`${environment.apiUrl}/category/add`, category)
+      .subscribe(() => this.updateCategories());
+  }
+
+  editCategory(category: { name: string; parentId: number }): void {
+    this.http
+      .post(`${environment.apiUrl}/category/edit`, category)
       .subscribe(() => this.updateCategories());
   }
 

@@ -6,10 +6,10 @@
   $foreground: map-get($theme, foreground);
 
   .footer-wrapper {
-    background-color: rgba(100, 100, 100, 0.3);
+    // background-color: rgba(100, 100, 100, 0.3);
 
-    mat-icon {
-      color: red;
+    .footer-text a {
+      color: mat-color($accent);
     }
   }
 }

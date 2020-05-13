@@ -22,7 +22,7 @@ export class NewCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.category = this.formBuilder.group({
       name: ['', Validators.required],
-      parentCategory: ['', Validators.required],
+      parentCategory: [''],
     });
 
     this.categoryDataService.fetchFlatCategories().subscribe((cats) => {
@@ -35,7 +35,7 @@ export class NewCategoryComponent implements OnInit {
       name: this.category.value.name,
       parentId: this.category.value.parentCategory.id,
     };
-    this.categoryDataService.postCategory(category);
+    this.categoryDataService.addCategory(category);
     this.dialogRef.close();
   }
 }

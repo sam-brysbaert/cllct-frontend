@@ -34,6 +34,10 @@ export class LinkListComponent implements OnInit {
   }
 
   openNewLinkDialog(): void {
-    this.dialog.open(NewLinkComponent);
+    const dialogRef = this.dialog.open(NewLinkComponent);
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.linkDataService.updateLinks();
+    });
   }
 }

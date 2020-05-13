@@ -39,22 +39,3 @@ app-header {
 app-footer {
   grid-area: footer;
 }
-
-@media (max-width: map-get($breakpoints, md)) {
-  .container {
-    grid-gap: 5px;
-    grid-template-columns: 0 1fr 0;
-  }
-}
-
-@media (min-width: map-get($breakpoints, md)) and (max-width: map-get($breakpoints, lg)) {
-  .container {
-    grid-template-columns: 10% 1fr 10%;
-  }
-}
-
-@media (min-width: map-get($breakpoints, lg)) {
-  .container {
-    grid-template-columns: 20% 1fr 20%;
-  }
-}

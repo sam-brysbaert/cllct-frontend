@@ -1,6 +1,7 @@
 @import "~@angular/material/theming";
 // import custom component themes
 @import "app/header/header-theme.scss";
+@import "app/footer/footer-theme.scss";
 @import "app/category/category-list/category-list-theme.scss";
 @import "app/user/login/login-theme.scss";
 @include mat-core();
@@ -8,6 +9,7 @@
 // for theming my own components
 @mixin custom-theme($theme) {
   @include header-theme($theme);
+  @include footer-theme($theme);
   @include category-list-theme($theme);
   @include login-theme($theme);
 }

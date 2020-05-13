@@ -33,7 +33,15 @@ export class EditCategoryComponent implements OnInit {
     });
   }
   onSubmit() {
-    console.log(this.categoryForm);
+    let category = {
+      name: this.categoryForm.value.name,
+      parentId: this.categoryForm.value.parentCategory
+        ? this.categoryForm.value.parentCategory.id
+        : null,
+      categoryId: this.category.id,
+    };
+    this.categoryDataService.editCategory(category);
+    this.dialogRef.close();
   }
 
   selectParentCategory() {

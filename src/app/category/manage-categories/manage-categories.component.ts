@@ -29,20 +29,12 @@ export class ManageCategoriesComponent implements OnInit {
   }
 
   openNewCategoryDialog(): void {
-    const dialogRef = this.dialog.open(NewCategoryComponent);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-    });
+    this.dialog.open(NewCategoryComponent);
   }
 
   openEditCategoryDialog(category: FlatCategory): void {
-    const dialogRef = this.dialog.open(EditCategoryComponent, {
+    this.dialog.open(EditCategoryComponent, {
       data: category,
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
     });
   }
 }
