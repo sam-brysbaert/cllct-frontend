@@ -41,11 +41,11 @@ export class LinkDataService {
     this.updateLinks();
   }
 
-  get currentCategoryId() {
+  get currentCategoryId(): number {
     return this._currentCategoryId;
   }
 
-  get links$() {
+  get links$(): Observable<Link[]> {
     return this._links$.asObservable();
   }
 }

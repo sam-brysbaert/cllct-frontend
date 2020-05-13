@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Category, FlatCategory } from './category';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { debounceTime, delay, map } from 'rxjs/operators';
 
@@ -10,7 +10,11 @@ import { debounceTime, delay, map } from 'rxjs/operators';
 })
 export class CategoryDataService {
   private Url: string = 'assets/category.json';
-  constructor(private http: HttpClient) {}
+  private _categories$ = new BehaviorSubject<Category[]>([]);
+
+  constructor(private http: HttpClient) {
+    this.updateCategories();
+  }
 
   public getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(
@@ -18,8 +22,14 @@ export class CategoryDataService {
     );
   }
 
+  public updateCategories(): void {
+    this.http
+      .get<Category[]>(`${environment.apiUrl}/collect/category/list`)
+      .subscribe((response) => this._categories$.next(response));
+  }
+
   fetchFlatCategories(): Observable<FlatCategory[]> {
-    return this.getCategories().pipe(
+    return this.categories$.pipe(
       map((cats) => {
         return this.flattenCategories(cats);
       })
@@ -62,5 +72,15 @@ export class CategoryDataService {
       (response) => (category = response.find((cat) => cat.id === id))
     );
     return category;
+  }
+
+  postCategory(category: { name: any; parentId: any }): void {
+    this.http
+      .post(`${environment.apiUrl}/category/add`, category)
+      .subscribe(() => this.updateCategories());
+  }
+
+  get categories$(): Observable<Category[]> {
+    return this._categories$.asObservable();
   }
 }

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { FlatCategory } from '../category';
 import { MatDialog } from '@angular/material/dialog';
 import { EditCategoryComponent } from '../edit-category/edit-category.component';
+import { NewCategoryComponent } from '../new-category/new-category.component';
 
 @Component({
   selector: 'app-manage-categories',
@@ -28,7 +29,7 @@ export class ManageCategoriesComponent implements OnInit {
   }
 
   openNewCategoryDialog(): void {
-    const dialogRef = this.dialog.open(EditCategoryComponent);
+    const dialogRef = this.dialog.open(NewCategoryComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');

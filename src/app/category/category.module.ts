@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { NewCategoryComponent } from './new-category/new-category.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
     CategoryComponent,
     ManageCategoriesComponent,
     EditCategoryComponent,
+    NewCategoryComponent,
   ],
   imports: [
     CommonModule,

@@ -31,7 +31,7 @@ export class CategoryListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._fetchCategories$ = this.categoryDataService.getCategories();
+    this._fetchCategories$ = this.categoryDataService.categories$;
     this._fetchCategories$.subscribe(
       (response) => (this.dataSource.data = response)
     );

@@ -24,7 +24,7 @@ export class EditCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.categoryForm = this.formBuilder.group({
       parentCategory: [''],
-      password: ['', Validators.required],
+      name: [this.category.name, Validators.required],
     });
 
     this.categoryDataService.fetchFlatCategories().subscribe((cats) => {

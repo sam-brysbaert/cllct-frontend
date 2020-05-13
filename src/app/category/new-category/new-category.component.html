@@ -1,6 +1,6 @@
 <div id="newCategoryWrapper">
-  <h1>Edit Category</h1>
-  <form [formGroup]="categoryForm" (keydown.enter)="onSubmit()">
+  <h1>Add Category</h1>
+  <form [formGroup]="category" (keydown.enter)="onSubmit()">
     <mat-form-field>
       <mat-select
         class="parentCategory"
@@ -39,9 +39,9 @@
   <button
     mat-flat-button
     color="primary"
-    (click)="categoryForm.valid ? onSubmit() : null"
+    (click)="category.valid ? onSubmit() : null"
     type="submit"
   >
-    Save Changes
+    Add Category
   </button>
 </div>
