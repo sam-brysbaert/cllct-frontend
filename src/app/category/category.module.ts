@@ -18,7 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { NewCategoryComponent } from './new-category/new-category.component';
-
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     CategoryListComponent,
@@ -42,6 +42,7 @@ import { NewCategoryComponent } from './new-category/new-category.component';
     MatInputModule,
     MatSelectModule,
     ColorPickerModule,
+    RouterModule,
   ],
   exports: [CategoryListComponent, CategoryComponent],
 })

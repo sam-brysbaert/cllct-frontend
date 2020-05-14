@@ -86,7 +86,7 @@ export class RegisterComponent implements OnInit {
               this.authenticationService.redirectUrl = undefined;
             } else {
               // TODO: change this to proper url (/category/all or something like that)
-              this.router.navigate(['/category/all']);
+              this.router.navigate(['/category/manage']);
             }
           } else {
             this.errorMessage = 'could not login';

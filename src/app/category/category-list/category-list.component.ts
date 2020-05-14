@@ -52,7 +52,7 @@ export class CategoryListComponent implements OnInit {
     if (!category) {
       this.router.navigate([`/category/all`]);
     } else {
-      this.router.navigate([`/category/${category.id}`]);
+      this.router.navigate([`/category/id/${category.id}`]);
     }
   }
 

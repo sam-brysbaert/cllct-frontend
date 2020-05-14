@@ -13,6 +13,10 @@
 
 #main-title {
   padding: 0 20px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  cursor: pointer;
 }
 
 #search {

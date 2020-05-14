@@ -9,12 +9,17 @@ import { ManageCategoriesComponent } from './category/manage-categories/manage-c
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   {
-    path: 'category/:id',
+    path: 'category/id/:id',
+    canActivate: [AuthGuard],
+    component: OverviewComponent,
+  },
+  {
+    path: 'category/all',
     canActivate: [AuthGuard],
     component: OverviewComponent,
   },
   { path: 'login', component: LoginComponent },
-  { path: 'manage', component: ManageCategoriesComponent },
+  { path: 'category/manage', component: ManageCategoriesComponent },
 ];
 
 @NgModule({
