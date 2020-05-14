@@ -1,30 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Link } from './link';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError, Subject } from 'rxjs';
+import { Observable, throwError, Subject, BehaviorSubject } from 'rxjs';
 import { catchError, retry, delay } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { Category, FlatCategory } from '../category/category';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LinkDataService {
   private Url: string = 'assets/link.json';
-  private _currentCategoryId: number = null;
   private _links$ = new Subject<Link[]>();
+  private _currentCategory$ = new BehaviorSubject<FlatCategory>(null);
 
   constructor(private http: HttpClient) {
     this.updateLinks();
   }
 
   public updateLinks(): void {
+    let cat: Category = this._currentCategory$.getValue();
     this.http
       .get<Link[]>(
         `${environment.apiUrl}/collect/link/list${
-          !!this._currentCategoryId
-            ? `?categoryId=${this._currentCategoryId}`
-            : ''
+          !!cat ? `?categoryId=${cat.id}` : ''
         }`
       )
       .subscribe((links) => this._links$.next(links));
@@ -36,13 +36,13 @@ export class LinkDataService {
       .subscribe(() => this.updateLinks());
   }
 
-  set categoryId(id: number) {
-    this._currentCategoryId = id;
+  set currentCategory(category: FlatCategory) {
+    this._currentCategory$.next(category);
     this.updateLinks();
   }
 
-  get currentCategoryId(): number {
-    return this._currentCategoryId;
+  get currentCategory$() {
+    return this._currentCategory$;
   }
 
   get links$(): Observable<Link[]> {

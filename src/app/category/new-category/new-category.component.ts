@@ -33,7 +33,9 @@ export class NewCategoryComponent implements OnInit {
   onSubmit() {
     let category = {
       name: this.category.value.name,
-      parentId: this.category.value.parentCategory.id,
+      parentId: !!this.category.value.parentCategory
+        ? this.category.value.parentCategory.id
+        : null,
     };
     this.categoryDataService.addCategory(category);
     this.dialogRef.close();

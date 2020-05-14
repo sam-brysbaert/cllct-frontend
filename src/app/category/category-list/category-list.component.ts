@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 })
 export class CategoryListComponent implements OnInit {
   private _fetchCategories$: Observable<Category[]>;
-  selectedCategory: Category = null;
+  selectedCategory: Category;
   // tree view
   treeControl = new NestedTreeControl<Category>((node) => node.children);
   dataSource = new MatTreeNestedDataSource<Category>();
@@ -37,6 +37,9 @@ export class CategoryListComponent implements OnInit {
     this._fetchCategories$.subscribe(
       (response) => (this.dataSource.data = response)
     );
+    this.linkDataService.currentCategory$.subscribe(
+      (cat) => (this.selectedCategory = cat)
+    );
     this.isHandset$ = this.handsetService.isHandset$;
   }
 
@@ -45,10 +48,12 @@ export class CategoryListComponent implements OnInit {
   }
 
   onSelect(category: Category) {
-    this.selectedCategory = category;
-    // this.linkDataService.categoryId = !!category ? category.id : null;
     this.isCollapsed = true;
-    this.router.navigate([`/category/${category.id}`]);
+    if (!category) {
+      this.router.navigate([`/category/all`]);
+    } else {
+      this.router.navigate([`/category/${category.id}`]);
+    }
   }
 
   hasChild = (_: number, node: Category) =>

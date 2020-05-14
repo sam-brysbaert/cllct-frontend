@@ -14,7 +14,6 @@ import { CategoryDataService } from '../../category/category-data.service';
 export class NewLinkComponent implements OnInit {
   public link: FormGroup;
   categories: FlatCategory[];
-  private _currentCategoryId: number;
 
   constructor(
     public dialogRef: MatDialogRef<NewLinkComponent>,
@@ -29,11 +28,9 @@ export class NewLinkComponent implements OnInit {
       category: ['', Validators.required],
     });
 
-    this._currentCategoryId = this.linkDataService.currentCategoryId;
-
     this.categoryDataService.fetchFlatCategories().subscribe((cats) => {
       this.categories = cats;
-      this.selectCategory(this._currentCategoryId);
+      this.selectCategory(this.linkDataService.currentCategory$.getValue());
     });
   }
 
@@ -47,10 +44,7 @@ export class NewLinkComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  selectCategory(id: number) {
-    const toSelect = this.categories.find((c) => c.id === id);
-    this.link
-      .get('category')
-      .setValue(!!toSelect ? toSelect : this.categories[0]);
+  selectCategory(cat: FlatCategory) {
+    this.link.get('category').setValue(!!cat ? cat : this.categories[0]);
   }
 }

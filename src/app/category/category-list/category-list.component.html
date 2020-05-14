@@ -46,7 +46,9 @@
           <button
             mat-button
             class="category-text"
-            [class.selected]="node === selectedCategory"
+            [class.selected]="
+              !!selectedCategory && node.id === selectedCategory.id
+            "
             (click)="onSelect(node)"
           >
             <app-category [category]="node"></app-category>
@@ -61,7 +63,9 @@
             <button
               mat-button
               class="category-text"
-              [class.selected]="node === selectedCategory"
+              [class.selected]="
+                !!selectedCategory && node.id === selectedCategory.id
+              "
               (click)="onSelect(node)"
             >
               <app-category [category]="node"></app-category>

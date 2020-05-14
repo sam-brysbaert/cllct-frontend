@@ -65,14 +65,6 @@ export class CategoryDataService {
     return !!cat.children && cat.children.length > 0;
   }
 
-  getBy(id: number): Category {
-    let category: Category;
-    this.getCategories().subscribe(
-      (response) => (category = response.find((cat) => cat.id === id))
-    );
-    return category;
-  }
-
   addCategory(category: { name: string; parentId: number }): void {
     this.http
       .post(`${environment.apiUrl}/category/add`, category)
@@ -87,5 +79,11 @@ export class CategoryDataService {
 
   get categories$(): Observable<Category[]> {
     return this._categories$.asObservable();
+  }
+
+  getBy(id: number): Observable<FlatCategory> {
+    return this._categories$.pipe(
+      map((cats) => this.flattenCategories(cats).find((c) => c.id === id))
+    );
   }
 }

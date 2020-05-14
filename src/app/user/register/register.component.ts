@@ -50,28 +50,25 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group(
-      {
-        username: [
-          '',
-          {
-            validators: [Validators.required, Validators.maxLength(16)],
-            updateOn: 'blur',
-            asyncValidators: serverSideValidateUsername(
-              this.authenticationService.checkUsernameAvailability
-            ),
-          },
-        ],
-        passwordGroup: this.formBuilder.group(
-          {
-            password: ['', [Validators.required, Validators.minLength(8)]],
-            confirmPassword: ['', Validators.required],
-          },
-          { validators: [comparePasswords], updateOn: 'change' }
-        ),
-      }
-      // { updateOn: 'blur' }
-    );
+    this.registerForm = this.formBuilder.group({
+      username: [
+        '',
+        {
+          validators: [Validators.required, Validators.maxLength(16)],
+          updateOn: 'blur',
+          asyncValidators: serverSideValidateUsername(
+            this.authenticationService.checkUsernameAvailability
+          ),
+        },
+      ],
+      passwordGroup: this.formBuilder.group(
+        {
+          password: ['', [Validators.required, Validators.minLength(8)]],
+          confirmPassword: ['', Validators.required],
+        },
+        { validators: [comparePasswords], updateOn: 'change' }
+      ),
+    });
   }
 
   onSubmit() {
@@ -89,7 +86,7 @@ export class RegisterComponent implements OnInit {
               this.authenticationService.redirectUrl = undefined;
             } else {
               // TODO: change this to proper url (/category/all or something like that)
-              this.router.navigate(['overview']);
+              this.router.navigate(['/category/all']);
             }
           } else {
             this.errorMessage = 'could not login';
