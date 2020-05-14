@@ -13,7 +13,12 @@
     <button mat-flat-button><mat-icon>delete</mat-icon></button>
   </div>
 </mat-card>
-<button mat-raised-button class="overview-button" routerLink="/category/all">
+<button
+  mat-raised-button
+  class="overview-button"
+  routerLink="/category/all"
+  *ngIf="categories?.length !== 0"
+>
   back to overview
 </button>
 <div class="buttonContainer">
