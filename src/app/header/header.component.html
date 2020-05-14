@@ -1,6 +1,12 @@
 <div class="header-wrapper" color="primary">
   <div class="header-content">
-    <div id="main-title" routerLink="/category/all">Cllct</div>
+    <div
+      id="main-title"
+      routerLink="/category/all"
+      *ngIf="!searchVisible() || (!(isHandset$ | async) && searchVisible())"
+    >
+      Cllct
+    </div>
     <div id="tools">
       <div id="search" *ngIf="(user$ | async) && searchVisible()">
         <form action="">

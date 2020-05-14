@@ -65,12 +65,6 @@
   padding: 0 0.5rem 0 0;
 }
 
-@media (max-width: map-get($breakpoints, sm)) {
-  #main-title {
-    display: none;
-  }
-}
-
 @media (min-width: map-get($breakpoints, md)) and (max-width: map-get($breakpoints, lg)) {
   .header-content {
     margin: 0 10%;
