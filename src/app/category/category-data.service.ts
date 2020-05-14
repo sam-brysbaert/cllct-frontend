@@ -65,7 +65,11 @@ export class CategoryDataService {
     return !!cat.children && cat.children.length > 0;
   }
 
-  addCategory(category: { name: string; parentId: number }): void {
+  addCategory(category: {
+    name: string;
+    color: string;
+    parentId: number;
+  }): void {
     this.http
       .post(`${environment.apiUrl}/category/add`, category)
       .subscribe(() => this.updateCategories());

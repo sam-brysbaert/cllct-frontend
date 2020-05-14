@@ -33,6 +33,7 @@ export class NewCategoryComponent implements OnInit {
   onSubmit() {
     let category = {
       name: this.category.value.name,
+      color: this.categoryColor,
       parentId: !!this.category.value.parentCategory
         ? this.category.value.parentCategory.id
         : null,

@@ -38,6 +38,11 @@
       <span>all links</span>
     </button>
 
+    <div class="noCategories" *ngIf="(categories$ | async)?.length === 0">
+      No categories yet. Go to category management by clicking on the pencil
+      above!
+    </div>
+
     <!-- list of categories in a material tree -->
     <mat-tree
       [dataSource]="dataSource"
