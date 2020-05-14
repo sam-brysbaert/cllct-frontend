@@ -13,6 +13,10 @@ export class LinkDetailsComponent implements OnInit {
   ngOnInit(): void {}
 
   open(link: Link) {
-    window.open(link.path);
+    let path: string = link.path;
+    if (!path.match(/^https?:\/\//i)) {
+      path = 'http://' + path;
+    }
+    window.open(path);
   }
 }

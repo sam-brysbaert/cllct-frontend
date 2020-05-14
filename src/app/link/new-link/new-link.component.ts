@@ -45,6 +45,9 @@ export class NewLinkComponent implements OnInit {
   }
 
   selectCategory(cat: FlatCategory) {
-    this.link.get('category').setValue(!!cat ? cat : this.categories[0]);
+    let toSelect: FlatCategory = this.categories.find((c) => c.id === cat.id);
+    this.link
+      .get('category')
+      .setValue(!!toSelect ? toSelect : this.categories[0]);
   }
 }
