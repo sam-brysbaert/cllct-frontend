@@ -1,3 +1,6 @@
+<div class="noLinks" *ngIf="(links$ | async)?.length === 0">
+  Try adding a new link by using the button below!
+</div>
 <div class="wrapper">
   <div *ngFor="let link of links$ | async | linkFilter: filterTerm">
     <app-link-details [link]="link"></app-link-details>
