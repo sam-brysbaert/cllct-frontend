@@ -4,6 +4,7 @@
 @import "app/footer/footer-theme.scss";
 @import "app/category/category-list/category-list-theme.scss";
 @import "app/user/login/login-theme.scss";
+@import "app/category/manage-categories/manage-categories-theme.scss";
 @include mat-core();
 
 // for theming my own components
@@ -12,6 +13,7 @@
   @include footer-theme($theme);
   @include category-list-theme($theme);
   @include login-theme($theme);
+  @include manage-categories-theme($theme);
 }
 
 // light theme

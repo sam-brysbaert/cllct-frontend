@@ -37,4 +37,8 @@ export class ManageCategoriesComponent implements OnInit {
       data: category,
     });
   }
+
+  deleteCategory(category: FlatCategory): void {
+    this.categoryDataService.deleteCategory(category.id);
+  }
 }

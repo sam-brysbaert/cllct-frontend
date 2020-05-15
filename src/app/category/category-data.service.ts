@@ -75,6 +75,12 @@ export class CategoryDataService {
       .subscribe(() => this.updateCategories());
   }
 
+  deleteCategory(id: number) {
+    this.http
+      .post(`${environment.apiUrl}/category/delete?id=${id}`, '')
+      .subscribe(() => this.updateCategories());
+  }
+
   get categories$(): Observable<Category[]> {
     return this._categories$.asObservable();
   }
