@@ -48,7 +48,8 @@ export class HeaderComponent implements OnInit {
   searchVisible(): boolean {
     return (
       this.router.url.includes('/category/id') ||
-      this.router.url.includes('/category/all')
+      this.router.url === '/category/all' ||
+      this.router.url === ''
     );
   }
 }

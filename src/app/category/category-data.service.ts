@@ -16,12 +16,6 @@ export class CategoryDataService {
     this.updateCategories();
   }
 
-  public getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(
-      `${environment.apiUrl}/collect/category/list`
-    );
-  }
-
   public updateCategories(): void {
     this.http
       .get<Category[]>(`${environment.apiUrl}/collect/category/list`)

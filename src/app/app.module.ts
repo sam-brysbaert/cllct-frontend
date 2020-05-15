@@ -21,6 +21,7 @@ import { UserModule } from './user/user.module';
 import { OverviewComponent } from './overview/overview.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { httpInterceptorProviders } from './http-interceptors/index';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { httpInterceptorProviders } from './http-interceptors/index';
     HeaderComponent,
     FooterComponent,
     OverviewComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

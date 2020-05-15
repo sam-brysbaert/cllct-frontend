@@ -39,7 +39,9 @@
         </button>
       </div>
       <mat-menu #appMenu="matMenu">
-        <div class="username">{{ user$ | async }}</div>
+        <div class="username">
+          <mat-icon>person</mat-icon>{{ user$ | async }}
+        </div>
         <button
           *ngIf="user$ | async; else notLoggedIn"
           mat-menu-item

@@ -28,4 +28,7 @@
       background-color: mat-contrast($primary, 500) !important;
     }
   }
+  .username {
+    color: mat-color($foreground, text);
+  }
 }

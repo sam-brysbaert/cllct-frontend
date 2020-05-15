@@ -71,7 +71,7 @@ export class AuthenticationService {
       localStorage.removeItem('currentUser');
       this._user$.next(null);
     }
-    this.router.navigate(['']);
+    this.router.navigate(['/login']);
   }
 
   checkUsernameAvailability = (username: string): Observable<boolean> => {
