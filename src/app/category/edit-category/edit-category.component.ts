@@ -30,7 +30,7 @@ export class EditCategoryComponent implements OnInit {
     this.categoryColor = this.category.color;
 
     this.categoryDataService.fetchFlatCategories().subscribe((cats) => {
-      this.categories = cats;
+      this.categories = cats.filter((cat) => cat.id != this.category.id);
       this.selectParentCategory();
     });
   }
