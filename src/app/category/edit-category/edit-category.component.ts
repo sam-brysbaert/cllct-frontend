@@ -27,6 +27,8 @@ export class EditCategoryComponent implements OnInit {
       name: [this.category.name, Validators.required],
     });
 
+    this.categoryColor = this.category.color;
+
     this.categoryDataService.fetchFlatCategories().subscribe((cats) => {
       this.categories = cats;
       this.selectParentCategory();
