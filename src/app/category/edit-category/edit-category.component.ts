@@ -38,6 +38,8 @@ export class EditCategoryComponent implements OnInit {
       parentId: this.categoryForm.value.parentCategory
         ? this.categoryForm.value.parentCategory.id
         : null,
+      color: this.categoryColor,
+
       categoryId: this.category.id,
     };
     this.categoryDataService.editCategory(category);
