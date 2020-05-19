@@ -31,4 +31,7 @@
   .username {
     color: mat-color($foreground, text);
   }
+  .darkThemeActive {
+    background-color: mat-color($primary, 800) !important;
+  }
 }
