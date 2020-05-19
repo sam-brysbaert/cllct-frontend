@@ -1,0 +1,34 @@
+<div class="editLinkWrapper">
+  <h1>Edit link</h1>
+  <form [formGroup]="linkForm" (keydown.enter)="onSubmit()">
+    <mat-form-field>
+      <mat-select
+        class="category"
+        formControlName="category"
+        placeholder="category"
+      >
+        <mat-option
+          *ngFor="let cat of categories"
+          style.padding-left="{{ 1 + cat.level }}rem"
+          [value]="cat"
+        >
+          <app-category [category]="cat"></app-category>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput class="name" formControlName="name" placeholder="name" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput class="path" formControlName="path" placeholder="path" />
+    </mat-form-field>
+  </form>
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="linkForm.valid ? onSubmit() : null"
+    type="submit"
+  >
+    Save Changes
+  </button>
+</div>

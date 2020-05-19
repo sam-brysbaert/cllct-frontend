@@ -8,7 +8,9 @@
     </mat-card-subtitle>
   </div>
   <div class="options">
-    <button mat-icon-button><mat-icon>edit</mat-icon></button>
+    <button mat-icon-button (click)="openEditLinkDialog()">
+      <mat-icon>edit</mat-icon>
+    </button>
     <button mat-icon-button><mat-icon>delete</mat-icon></button>
   </div>
 </mat-card>

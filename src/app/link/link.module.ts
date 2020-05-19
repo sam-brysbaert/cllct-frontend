@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { CategoryModule } from '../category/category.module';
+import { EditLinkComponent } from './edit-link/edit-link.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CategoryModule } from '../category/category.module';
     LinkDetailsComponent,
     LinkFilterPipe,
     NewLinkComponent,
+    EditLinkComponent,
   ],
   imports: [
     CommonModule,

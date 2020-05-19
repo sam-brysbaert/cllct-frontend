@@ -35,7 +35,7 @@ export class NewLinkComponent implements OnInit {
   }
 
   onSubmit() {
-    let link: Link = {
+    let link = {
       name: this.link.value.name,
       path: this.link.value.path,
       categoryId: this.link.value.category.id,

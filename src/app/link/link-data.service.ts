@@ -30,7 +30,7 @@ export class LinkDataService {
       .subscribe((links) => this._links$.next(links));
   }
 
-  createLink(link: Link): void {
+  createLink(link): void {
     this.http
       .post(`${environment.apiUrl}/collect/link`, link)
       .subscribe(() => this.updateLinks());
@@ -39,6 +39,12 @@ export class LinkDataService {
   set currentCategory(category: FlatCategory) {
     this._currentCategory$.next(category);
     this.updateLinks();
+  }
+
+  public editLink(link: Link): void {
+    this.http
+      .post(`${environment.apiUrl}/link/edit`, link)
+      .subscribe(() => this.updateLinks());
   }
 
   get currentCategory$() {
