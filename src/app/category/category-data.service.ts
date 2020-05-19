@@ -23,11 +23,39 @@ export class CategoryDataService {
   }
 
   fetchFlatCategories(): Observable<FlatCategory[]> {
-    return this.categories$.pipe(
-      map((cats) => {
-        return this.flattenCategories(cats);
-      })
+    return this.categories$.pipe(map((cats) => this.flattenCategories(cats)));
+  }
+
+  fetchEligibleParents(categoryId: number): Observable<FlatCategory[]> {
+    return this.fetchFlatCategories().pipe(
+      map((cats) => this.removeIneligibleParents(cats, categoryId))
     );
+  }
+
+  hasChild(cat: Category) {
+    return !!cat.children && cat.children.length > 0;
+  }
+
+  addCategory(category: {
+    name: string;
+    color: string;
+    parentId: number;
+  }): void {
+    this.http
+      .post(`${environment.apiUrl}/category/add`, category)
+      .subscribe(() => this.updateCategories());
+  }
+
+  editCategory(category: { name: string; parentId: number }): void {
+    this.http
+      .post(`${environment.apiUrl}/category/edit`, category)
+      .subscribe(() => this.updateCategories());
+  }
+
+  deleteCategory(id: number) {
+    this.http
+      .post(`${environment.apiUrl}/category/delete?id=${id}`, '')
+      .subscribe(() => this.updateCategories());
   }
 
   // recursive function to convert a nested list of categories to
@@ -55,30 +83,17 @@ export class CategoryDataService {
     return categoriesFlat;
   }
 
-  hasChild(cat: Category) {
-    return !!cat.children && cat.children.length > 0;
-  }
-
-  addCategory(category: {
-    name: string;
-    color: string;
-    parentId: number;
-  }): void {
-    this.http
-      .post(`${environment.apiUrl}/category/add`, category)
-      .subscribe(() => this.updateCategories());
-  }
-
-  editCategory(category: { name: string; parentId: number }): void {
-    this.http
-      .post(`${environment.apiUrl}/category/edit`, category)
-      .subscribe(() => this.updateCategories());
-  }
-
-  deleteCategory(id: number) {
-    this.http
-      .post(`${environment.apiUrl}/category/delete?id=${id}`, '')
-      .subscribe(() => this.updateCategories());
+  removeIneligibleParents(cats: FlatCategory[], categoryId): FlatCategory[] {
+    for (let i: number = 0; i < cats.length; i++) {
+      if (cats[i].id === categoryId) {
+        for (let j: number = i + 1; j < cats.length; j++) {
+          if (cats[j].level <= cats[i].level) break;
+          cats[j] = null;
+        }
+        break;
+      }
+    }
+    return cats.filter((cat) => !!cat && cat.id !== categoryId);
   }
 
   get categories$(): Observable<Category[]> {
