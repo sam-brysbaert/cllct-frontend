@@ -1,8 +1,23 @@
 mat-card-title,
 mat-card-subtitle {
-  cursor: pointer;
 }
 
 mat-card {
   margin-bottom: 10px;
+  position: relative;
+}
+
+.content {
+  width: 100%;
+  cursor: pointer;
+}
+
+.options {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  visibility: hidden;
+}
+mat-card:hover .options {
+  visibility: visible;
 }

@@ -8,10 +8,10 @@
       style.padding-left="{{ 1 + cat.level }}rem"
     ></app-category>
     <div>
-      <button mat-flat-button (click)="openEditCategoryDialog(cat)">
+      <button mat-icon-button (click)="openEditCategoryDialog(cat)">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-flat-button [matMenuTriggerFor]="areYouSure">
+      <button mat-icon-button [matMenuTriggerFor]="areYouSure">
         <mat-icon>delete</mat-icon>
       </button>
       <mat-menu #areYouSure="matMenu">
@@ -31,7 +31,7 @@
     routerLink="/category/all"
     *ngIf="categories?.length !== 0"
   >
-    back to overview
+    go to overview
   </button>
   <div class="buttonContainer">
     <button mat-fab class="newCategoryButton" (click)="openNewCategoryDialog()">

@@ -1,8 +1,14 @@
 <mat-card>
-  <mat-card-title (click)="open(link)">
-    {{ link.name }}
-  </mat-card-title>
-  <mat-card-subtitle (click)="open(link)">
-    {{ link.path }}
-  </mat-card-subtitle>
+  <div class="content">
+    <mat-card-title (click)="open(link)">
+      {{ link.name }}
+    </mat-card-title>
+    <mat-card-subtitle (click)="open(link)">
+      {{ link.path }}
+    </mat-card-subtitle>
+  </div>
+  <div class="options">
+    <button mat-icon-button><mat-icon>edit</mat-icon></button>
+    <button mat-icon-button><mat-icon>delete</mat-icon></button>
+  </div>
 </mat-card>
