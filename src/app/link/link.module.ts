@@ -17,6 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { CategoryModule } from '../category/category.module';
 import { EditLinkComponent } from './edit-link/edit-link.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { EditLinkComponent } from './edit-link/edit-link.component';
     MatInputModule,
     MatSelectModule,
     CategoryModule,
+    MatMenuModule,
   ],
   exports: [LinkListComponent, LinkDetailsComponent],
 })

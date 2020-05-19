@@ -31,4 +31,8 @@ export class LinkDetailsComponent implements OnInit {
       data: this.link,
     });
   }
+
+  deleteLink() {
+    this.linkDataService.deleteLink(this.link);
+  }
 }

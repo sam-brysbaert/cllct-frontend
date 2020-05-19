@@ -47,6 +47,12 @@ export class LinkDataService {
       .subscribe(() => this.updateLinks());
   }
 
+  public deleteLink(link: Link): void {
+    this.http
+      .post(`${environment.apiUrl}/link/delete`, link)
+      .subscribe(() => this.updateLinks());
+  }
+
   get currentCategory$() {
     return this._currentCategory$;
   }

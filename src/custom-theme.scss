@@ -3,7 +3,6 @@
 @import "app/header/header-theme.scss";
 @import "app/footer/footer-theme.scss";
 @import "app/category/category-list/category-list-theme.scss";
-@import "app/category/manage-categories/manage-categories-theme.scss";
 @include mat-core();
 
 // for theming my own components
@@ -11,11 +10,13 @@
   @include header-theme($theme);
   @include footer-theme($theme);
   @include category-list-theme($theme);
-  @include manage-categories-theme($theme);
 
   // global custom colors
   a {
     color: mat-color($accent);
+  }
+  div.confirmation-text {
+    color: mat-color(map-get($theme, foreground), text);
   }
 }
 

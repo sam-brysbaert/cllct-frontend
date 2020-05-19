@@ -11,6 +11,16 @@
     <button mat-icon-button (click)="openEditLinkDialog()">
       <mat-icon>edit</mat-icon>
     </button>
-    <button mat-icon-button><mat-icon>delete</mat-icon></button>
+    <button mat-icon-button [matMenuTriggerFor]="areYouSure">
+      <mat-icon>delete</mat-icon>
+    </button>
   </div>
+  <mat-menu #areYouSure="matMenu">
+    <div class="confirmation-text">
+      Are you sure you want to delete this link?
+    </div>
+    <button mat-menu-item (click)="deleteLink()">
+      Yes, I'm sure
+    </button>
+  </mat-menu>
 </mat-card>
