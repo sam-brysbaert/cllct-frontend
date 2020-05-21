@@ -27,6 +27,8 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
+    username = username.toLowerCase();
+
     return this.http
       .post(
         `${environment.apiUrl}/user/authenticate`,
@@ -47,6 +49,8 @@ export class AuthenticationService {
   }
 
   register(username: string, password: string): Observable<boolean> {
+    username = username.toLowerCase();
+
     return this.http
       .post(
         `${environment.apiUrl}/user/register`,
