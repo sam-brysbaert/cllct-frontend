@@ -1,3 +1,5 @@
+@import "../../../global";
+
 mat-card-title,
 mat-card-subtitle {
 }
@@ -18,10 +20,15 @@ mat-card {
   right: 0.5rem;
   visibility: hidden;
 }
+
 mat-card:hover .options {
   visibility: visible;
 }
-
+@media (max-width: map-get($breakpoints, md)) {
+  mat-card .options {
+    visibility: visible;
+  }
+}
 .confirmation-text {
   padding: 1rem;
 }
