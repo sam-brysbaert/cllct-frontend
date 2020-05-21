@@ -23,16 +23,14 @@ export class LinkDataService {
     let cat: Category = this._currentCategory$.getValue();
     this.http
       .get<Link[]>(
-        `${environment.apiUrl}/collect/link/list${
-          !!cat ? `?categoryId=${cat.id}` : ''
-        }`
+        `${environment.apiUrl}/link/list${!!cat ? `?categoryId=${cat.id}` : ''}`
       )
       .subscribe((links) => this._links$.next(links));
   }
 
   createLink(link): void {
     this.http
-      .post(`${environment.apiUrl}/collect/link`, link)
+      .post(`${environment.apiUrl}/link/add`, link)
       .subscribe(() => this.updateLinks());
   }
 

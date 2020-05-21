@@ -18,7 +18,7 @@ export class CategoryDataService {
 
   public updateCategories(): void {
     this.http
-      .get<Category[]>(`${environment.apiUrl}/collect/category/list`)
+      .get<Category[]>(`${environment.apiUrl}/category/list`)
       .subscribe((response) => this._categories$.next(response));
   }
 
