@@ -2,7 +2,7 @@
 
 This is the frontend for cllct, which is a tool to manage bookmarks. You can use it to collect links and separate them into categories. It is made using material design, works well on mobile and has a dark mode.
 
-You can find this app online at [cllct.xyz](cllct.xyz).
+You can find this app online at [cllct.xyz](http://cllct.xyz).
 
 ![](https://i.imgur.com/azYHZDw.png)
 
