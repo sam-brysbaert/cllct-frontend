@@ -8,7 +8,11 @@
       Cllct
     </div>
     <div id="tools">
-      <div id="search" *ngIf="(user$ | async) && searchVisible()">
+      <div
+        id="search"
+        data-cy="searchBar"
+        *ngIf="(user$ | async) && searchVisible()"
+      >
         <form action="">
           <mat-icon id="searchIcon">search</mat-icon>
           <mat-form-field>

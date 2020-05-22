@@ -9,6 +9,7 @@
           <input
             matInput
             id="username"
+            data-cy="usernameInput"
             formControlName="username"
             placeholder="username"
           />
@@ -18,6 +19,7 @@
           <input
             matInput
             id="password"
+            data-cy="passwordInput"
             formControlName="password"
             type="password"
             placeholder="password"
@@ -33,7 +35,7 @@
         Login
       </button>
       <div id="registerLink">
-        <a href="/register"
+        <a href="/register" data-cy="registerLink"
           >Don't have an account yet? Click here to register.</a
         >
       </div>
