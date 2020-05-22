@@ -48,13 +48,13 @@ export class CategoryDataService {
 
   editCategory(category: { name: string; parentId: number }): void {
     this.http
-      .post(`${environment.apiUrl}/category/edit`, category)
+      .put(`${environment.apiUrl}/category/edit`, category)
       .subscribe(() => this.updateCategories());
   }
 
   deleteCategory(id: number) {
     this.http
-      .post(`${environment.apiUrl}/category/delete?id=${id}`, '')
+      .delete(`${environment.apiUrl}/category/delete?id=${id}`)
       .subscribe(() => this.updateCategories());
   }
 

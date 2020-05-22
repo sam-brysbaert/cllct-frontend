@@ -41,13 +41,13 @@ export class LinkDataService {
 
   public editLink(link: Link): void {
     this.http
-      .post(`${environment.apiUrl}/link/edit`, link)
+      .put(`${environment.apiUrl}/link/edit`, link)
       .subscribe(() => this.updateLinks());
   }
 
   public deleteLink(link: Link): void {
     this.http
-      .post(`${environment.apiUrl}/link/delete`, link)
+      .delete(`${environment.apiUrl}/link/delete?id=${link.linkId}`)
       .subscribe(() => this.updateLinks());
   }
 
