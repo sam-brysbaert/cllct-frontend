@@ -54,7 +54,7 @@ export class CategoryDataService {
 
   deleteCategory(id: number) {
     this.http
-      .post(`${environment.apiUrl}/category/delete?id=${id}`, '')
+      .delete(`${environment.apiUrl}/category/delete?id=${id}`)
       .subscribe(() => this.updateCategories());
   }
 
