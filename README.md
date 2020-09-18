@@ -4,6 +4,10 @@ This is the frontend for cllct, which is a tool to manage bookmarks. You can use
 
 You can find this app online at [cllct.xyz](http://cllct.xyz).
 
+The source code for the backend can be found [here](https://github.com/sam-brysbaert/cllct-API).
+
+
+
 ![](https://i.imgur.com/azYHZDw.png)
 
 ![](https://i.imgur.com/Djygy5N.png)
